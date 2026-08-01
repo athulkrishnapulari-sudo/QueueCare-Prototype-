@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <title>QueueCare</title>
+</head>
+
+<body>
+    <main>
+        <!-- NAVBAR -->
+        <nav>
+            <div id="brand">
+                <div id="logo">
+                    <img src="assets/images/logo.png" alt="" />
+                </div>
+                <div id="brand_name">
+                    <span style="color: var(--primary); font-size: 24px; font-weight: 600">QueueCare</span>
+                    <span style="
+                color: var(--secondary);
+                font-size: 12px;
+                letter-spacing: 1.5px;
+              ">KERALA</span>
+                </div>
+            </div>
+            <ul id="nav_cont">
+                <li class="nav_item active">Home</li>
+                <li class="nav_item">Book Appointment</li>
+                <li class="nav_item">Live Queue</li>
+                <li class="nav_item">Hospitals</li>
+                <li class="nav_item">Health Camps</li>
+                <li class="nav_item">Blood Bank</li>
+                <li class="nav_item">Feedback</li>
+                <li class="nav_item">Help</li>
+            </ul>
+            <div id="profile">
+                <div id="language">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                        <path
+                            d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z" />
+                    </svg>
+
+                    <select id="language-select" name="language">
+                        <option value="English">English</option>
+                        <option value="Malayalam" selected>മലയാളം</option>
+                    </select>
+                </div>
+                <button id="profile_button">
+                    <div id="icon">
+                        <img src="assets/images/profile.avif" alt="" />
+                    </div>
+                    <div id="profileName">
+                        <span>Hello,</span><span style="font-weight: bold">Athul</span>
+                    </div>
+                    <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- NAVBAR  -->
+
+        <!-- HERO -->
+        <section id="hero">
+            <div id="background">
+                <img src="assets/images/hero-back.png" alt="" />
+            </div>
+            <div id="hero_content">
+                <h1>
+                    Smart Queue. Better Care.<br />Better
+                    <span style="color: var(--primary)">Kerala.</span>
+                </h1>
+                <p>
+                    Book OP appointments, track live queues, and get smarter healthcare
+                    - all in one place
+                </p>
+                <div id="hero_buttons">
+                    <button id="bookOpAppoint" class="hero_btn1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="17" rx="2" />
+                            <path d="M16 2v4" />
+                            <path d="M8 2v4" />
+                            <path d="M3 10h18" />
+                            <path d="m8 15 2 2 4-4" />
+                        </svg>
+                        Book OP Appointment
+                    </button>
+                    <button id="LiveQueueStats" class="hero_btn2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+                            <rect x="4" y="11" width="4" height="9" rx="0.5" />
+                            <rect x="10" y="3" width="4" height="17" rx="0.5" />
+                            <rect x="16" y="7" width="4" height="13" rx="0.5" />
+                        </svg>
+                        >Live Queue Status
+                    </button>
+                </div>
+            </div>
+            <div id="tokenDisplay">
+                <span style="font-size: 12px;font-weight: 550">Your Current Token</span>
+                <span
+                    style="margin-left:3px;margin-top:8px;margin-bottom:3px;font-size:  32px;font-weight: 600;color: var(--primary);">OP
+                    245</span>
+                <span style="margin-left:3px;font-size: 11px;">General Medicine</span>
+                <span style="margin-left:3px;font-size: 11px;">Medical College Hospital</span>
+                <span style="margin-left:3px;font-size: 10px;opacity: 0.8;">Thiruvananthapuram</span>
+                <div id="line"></div>
+                <div class="status-card">
+
+                    <div class="info-item">
+                        <i class="bi bi-people"></i>
+                        <div class="info-content">
+                            <span class="label">People Ahead</span>
+                            <span class="value">23</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="bi bi-clock"></i>
+                        <div class="info-content">
+                            <span class="label">Estimated Wait</span>
+                            <span class="value">45 mins</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="viewQueue">View Live Queue</button>
+            </div>
+            </div>
+        </section>
+        <!-- HERO -->
+    </main>
+    
+    
+</body>
+
+</html>
