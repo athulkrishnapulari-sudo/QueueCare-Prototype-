@@ -8,6 +8,33 @@ body,
 html {
   scroll-behavior: smooth;
   font-family: sans-serif;
+  scrollbar-width: 0px;
+}
+
+
+html::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  display: none;
+}
+html,
+main {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+
+main{
+  max-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
 }
 
 :root {
@@ -26,7 +53,11 @@ html {
   --success: #16a34a;
 }
 
-/* NAVBAR STYLE  */
+/* ============================ */
+
+/*         NAVBAR STYLE         */
+
+/* ============================ */
 
 nav {
   width: 100%;
@@ -34,6 +65,11 @@ nav {
   display: flex;
   align-items: center;
   padding: 0 15px;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 1;
+  background-color: white;
 }
 #brand {
   display: flex;
@@ -50,7 +86,6 @@ nav {
   height: 55px;
 }
 #nav_cont {
-  list-style: none;
   display: flex;
   gap: 1.2rem;
   align-items: center;
@@ -146,7 +181,12 @@ nav {
   height: 45px;
 }
 
-/* HERO */
+/* ============================== */
+
+/*         HERO SECTION           */
+
+/* ============================== */
+
 
 #hero {
   width: 100%;
@@ -241,20 +281,17 @@ nav {
   padding-left: 10px;
 }
 
-/* Individual Item Row */
 .info-item {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Icon Styling */
 .info-item i {
   font-size: 18px;
-  color: #0d5c46; /* Matching deep green tone */
+  color: #0d5c46; 
 }
 
-/* Text Block */
 .info-content {
   display: flex;
   flex-direction: column;
@@ -273,12 +310,485 @@ nav {
   color: #0d5c46;
 }
 
-#viewQueue{
-    padding: 10px 0;
-    margin-top: 10px;
-    border-radius: 8px;
-    border: none;
-    background-color: var(--primary);
-    color:white;
-    font-size: 11px;
+#viewQueue {
+  padding: 10px 0;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  font-size: 11px;
+}
+
+
+/* ============================== */
+
+/*          MAIN AREA             */
+
+/* ============================== */
+
+#mainArea {
+  padding: 10px 70px;
+}
+
+#row1 {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+}
+
+.row1Btn {
+  flex: 1;              
+  display: flex;
+  gap:8px;
+  justify-content: flex-start;
+  align-items: center;
+  padding:8px 30px;
+  font-size: 11px;
+  background-color: transparent;
+  border:0.5px solid rgba(128, 128, 128, 0.158);
+  border-radius: 8px;
+  line-height: 1.3;
+  box-shadow:
+    0 0 10px 0 rgba(0, 0, 0, 0.068);
+    font-weight: 550;
+}
+.row1Btn svg {
+    width: 35px;
+}
+/* Dashboard Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.stack-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Card Styling */
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.card-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-sky {
+  background-color: rgba(240, 249, 255, 0.6);
+  border-color: #e0f2fe;
+}
+
+.card-rose {
+  background-color: rgba(255, 241, 242, 0.6);
+  border-color: #ffe4e6;
+}
+
+.p-compact {
+  padding: 1rem;
+}
+
+/* Headers */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.card-title-sm {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.card-subtitle {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Items & Rows */
+.hospital-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hospital-item:hover {
+  background-color: #f9fafb;
+  border-color: #f3f4f6;
+}
+
+.item-recommended {
+  background-color: rgba(236, 253, 245, 0.7);
+  border-color: rgba(209, 250, 229, 0.5);
+}
+
+.item-recommended:hover {
+  background-color: #ecfdf5;
+}
+
+.doctor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.doctor-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.doctor-note {
+  font-size: 0.625rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.item-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.item-subtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.125rem;
+}
+
+.item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.content-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Medicine Banner */
+.medicine-banner {
+  background-color: rgba(236, 253, 245, 0.7);
+  border: 1px solid #d1fae5;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.medicine-banner:hover {
+  background-color: #ecfdf5;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.check-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #059669;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.banner-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #064e3b;
+}
+
+.banner-subtitle {
+  font-size: 0.6875rem;
+  color: #047857;
+}
+
+/* Badges & Status */
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+}
+
+.badge-recommended {
+  background-color: rgba(167, 243, 208, 0.6);
+  color: #065f46;
+}
+
+.badge-emerald {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-amber {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-rose {
+  background-color: #ffe4e6;
+  color: #be123c;
+}
+
+.status-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.status-amber {
+  color: #d97706;
+}
+
+.status-emerald {
+  color: #047857;
+}
+
+/* Date Badge */
+.date-badge {
+  border: 1px solid #bae6fd;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  min-width: 38px;
+}
+
+.date-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0284c7;
+  line-height: 1.25;
+}
+
+.date-month {
+  font-size: 0.5625rem;
+  color: #0284c7;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Blood Bank Status */
+.blood-group {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e11d48;
+}
+
+.blood-status {
+  font-size: 0.625rem;
+  color: #e11d48;
+  font-weight: 500;
+}
+
+/* Text & Typography Helpers */
+.text-right {
+  text-align: right;
+}
+
+.meta-main {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.meta-sub {
+  font-size: 0.6875rem;
+  color: #6b7280;
+}
+
+.border-none {
+  border-bottom: none;
+}
+
+.mb-compact {
+  margin-bottom: 0.75rem;
+}
+
+/* Icons & Link Styling */
+.header-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.chevron-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.check-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.feature-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.feature-icon-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.link-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.text-emerald { color: #059669; }
+.text-sky { color: #0284c7; }
+.text-rose { color: #e11d48; }
+.text-gray { color: #9ca3af; }
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: 1.5rem;
+  transition: color 0.15s ease;
+}
+
+.footer-link:hover {
+  color: #1d4ed8;
+}
+
+.link-action {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  transition: color 0.15s ease;
+}
+
+.link-action:hover {
+  color: #1d4ed8;
+}
+/* ============================== */
+
+/*            FOOTER              */
+
+/* ============================== */
+
+footer {
+  background-color: var(--primary);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding:10px 20px;
+  position: fixed;
+  bottom:0;left:0;
+}
+footer span {
+  font-size: 9px;
+  color: white;
+}
+footer a {
+  font-size: 9px;
+  color: white;
+}
+#footer_left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#footer_right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#footer_left img {
+  height: 30px;
+  filter: invert();
+}
+#social_links {
+  display: flex;
+  gap: 5px;
+  margin-right: 20px;
+}
+.social_link {
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+.social_link img {
+  width: 10px;
+  height: 10px;
+  filter: invert();
 }

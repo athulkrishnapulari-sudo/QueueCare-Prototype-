@@ -97,7 +97,7 @@
                             <rect x="10" y="3" width="4" height="17" rx="0.5" />
                             <rect x="16" y="7" width="4" height="13" rx="0.5" />
                         </svg>
-                        >Live Queue Status
+                        Live Queue Status
                     </button>
                 </div>
             </div>
@@ -133,9 +133,536 @@
             </div>
         </section>
         <!-- HERO -->
+        <div id="mainArea">
+            <div id="row1">
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .green-stroke {
+                                    fill: none;
+                                    stroke: #0a6955;
+                                    stroke-width: 6;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+
+                                .green-fill {
+                                    fill: #0a6955;
+                                }
+
+                                .white-bg {
+                                    fill: #ffffff;
+                                }
+                            </style>
+                            <!-- Mask to cleanly erase background lines behind the bottom-right badge -->
+                            <mask id="badge-mask">
+                                <rect x="0" y="0" width="100" height="100" fill="white" />
+                                <circle cx="68" cy="68" r="18" fill="black" />
+                            </mask>
+                        </defs>
+
+                        <!-- Calendar Container with Mask applied -->
+                        <g mask="url(#badge-mask)">
+                            <!-- Main Outer Body -->
+                            <rect x="22" y="22" width="56" height="58" rx="10" ry="10" class="green-stroke" />
+
+                            <!-- Top Header Line -->
+                            <line x1="22" y1="38" x2="78" y2="38" class="green-stroke" />
+
+                            <!-- Top Binder Hooks -->
+                            <line x1="36" y1="14" x2="36" y2="22" class="green-stroke" />
+                            <line x1="64" y1="14" x2="64" y2="22" class="green-stroke" />
+
+                            <!-- Calendar Grid Dots -->
+                            <!-- Row 1 -->
+                            <circle cx="34" cy="48" r="3" class="green-fill" />
+                            <circle cx="50" cy="48" r="3" class="green-fill" />
+                            <circle cx="66" cy="48" r="3" class="green-fill" />
+
+                            <!-- Row 2 -->
+                            <circle cx="34" cy="60" r="3" class="green-fill" />
+                            <circle cx="50" cy="60" r="3" class="green-fill" />
+
+                            <!-- Row 3 -->
+                            <circle cx="34" cy="71" r="3" class="green-fill" />
+                            <circle cx="50" cy="71" r="3" class="green-fill" />
+                        </g>
+
+                        <!-- Bottom-Right Badge Circle -->
+                        <circle cx="68" cy="68" r="14" class="white-bg green-stroke" />
+
+                        <!-- Plus / Cross Symbol Inside Badge -->
+                        <line x1="68" y1="61" x2="68" y2="75" class="green-stroke" stroke-width="4.5" />
+                        <line x1="61" y1="68" x2="75" y2="68" class="green-stroke" stroke-width="4.5" />
+                    </svg>
+
+                    Book<br>Appointment
+                </button>
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .sparkle-stroke {
+                                    fill: none;
+                                    stroke: #0a6955;
+                                    stroke-width: 5;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+
+                                .sparkle-fill {
+                                    fill: #0a6955;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- Main Central Hollow Sparkle -->
+                        <path class="sparkle-stroke" d="
+    M 50 18 
+    Q 50 50, 82 50 
+    Q 50 50, 50 82 
+    Q 50 50, 18 50 
+    Q 50 50, 50 18 
+    Z
+  " />
+
+                        <!-- Top-Left Sparkle (Solid) -->
+                        <path class="sparkle-fill" d="
+    M 30 22 
+    Q 30 30, 38 30 
+    Q 30 30, 30 38 
+    Q 30 30, 22 30 
+    Q 30 30, 30 22 
+    Z
+  " />
+
+                        <!-- Top-Right Sparkle (Small, Solid) -->
+                        <path class="sparkle-fill" d="
+    M 68 30 
+    Q 68 34, 72 34 
+    Q 68 34, 68 38 
+    Q 68 34, 64 34 
+    Q 68 34, 68 30 
+    Z
+  " />
+
+                        <!-- Bottom-Right Sparkle (Solid) -->
+                        <path class="sparkle-fill" d="
+    M 68 66 
+    Q 68 73, 75 73 
+    Q 68 73, 68 80 
+    Q 68 73, 61 73 
+    Q 68 73, 68 66 
+    Z
+  " />
+                    </svg>
+
+                    Ai Department<br>Suggestion
+                </button>
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .green-stroke {
+                                    fill: none;
+                                    stroke: #106859;
+                                    stroke-width: 6;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+
+                                .green-fill {
+                                    fill: #106859;
+                                    stroke: none;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- Vertically inverted capsule without the circular tablet -->
+                        <g transform="translate(50 50) scale(1 -1) rotate(-45) translate(-50 -50)">
+                            <!-- Capsule Outer Body -->
+                            <rect x="31" y="15" width="38" height="70" rx="19" ry="19" class="green-stroke" />
+
+                            <!-- Dividing Center Line -->
+                            <line x1="31" y1="50" x2="69" y2="50" class="green-stroke" />
+                        </g>
+                    </svg>
+
+                    Check Medicine<br>Availability
+                </button>
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .user-stroke {
+                                    fill: none;
+                                    stroke: #106859;
+                                    stroke-width: 6;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- User Head -->
+                        <circle cx="50" cy="32" r="16" class="user-stroke" />
+
+                        <!-- User Shoulders / Body -->
+                        <path d="M 24 76 C 24 58, 36 52, 50 52 C 64 52, 76 58, 76 76" class="user-stroke" />
+
+                        <!-- V-Neck Collar Detail -->
+                        <path d="M 42 53 L 50 63 L 58 53" class="user-stroke" />
+                    </svg>
+
+                    Doctor<br>Status
+                </button>
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .family-stroke {
+                                    fill: none;
+                                    stroke: #106859;
+                                    stroke-width: 5.5;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- Left Adult -->
+                        <circle cx="34" cy="28" r="9" class="family-stroke" />
+                        <path d="M 18 78 L 18 64 C 18 52, 25 46, 34 46 C 40 46, 45 49, 48 54" class="family-stroke" />
+
+                        <!-- Right Adult -->
+                        <circle cx="66" cy="28" r="9" class="family-stroke" />
+                        <path d="M 82 78 L 82 64 C 82 52, 75 46, 66 46 C 60 46, 55 49, 52 54" class="family-stroke" />
+
+                        <!-- Center Child (Small Person) -->
+                        <circle cx="50" cy="56" r="6" class="family-stroke" />
+                        <path d="M 40 78 L 40 73 C 40 68, 44 65, 50 65 C 56 65, 60 68, 60 73 L 60 78"
+                            class="family-stroke" />
+                    </svg>
+
+                    Family<br>Booking
+                </button>
+                <button class="row1Btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+                        <defs>
+                            <style>
+                                .icon-stroke {
+                                    fill: none;
+                                    stroke: #106859;
+                                    stroke-width: 5.5;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                }
+
+                                .icon-fill {
+                                    fill: #106859;
+                                }
+                            </style>
+                        </defs>
+
+                        <!-- Location Pin Outline -->
+                        <path
+                            d="M 50 12 C 32 12, 18 26, 18 44 C 18 64, 50 88, 50 88 C 50 88, 82 64, 82 44 C 82 26, 68 12, 50 12 Z"
+                            class="icon-stroke" />
+
+                        <!-- Hospital Cross Inside Pin -->
+                        <!-- Vertical Bar -->
+                        <line x1="50" y1="31" x2="50" y2="53" class="icon-stroke" stroke-width="6.5" />
+
+                        <!-- Horizontal Bar -->
+                        <line x1="39" y1="42" x2="61" y2="42" class="icon-stroke" stroke-width="6.5" />
+                    </svg>
+
+                    Nearby<br>Hospitals
+                </button>
+            </div>
+            <div class="dashboard-grid">
+
+                <!-- COLUMN 1: Smart Hospital Recommendation -->
+                <div class="card card-column">
+                    <div>
+                        <div class="card-header">
+                            <svg class="header-icon text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            <div>
+                                <h2 class="card-title">Smart Hospital Recommendation</h2>
+                                <p class="card-subtitle">Based on queue length, distance & travel time</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 1: Recommended -->
+                        <div class="hospital-item item-recommended">
+                            <div>
+                                <h3 class="item-title">Medical College Hospital</h3>
+                                <p class="item-subtitle">Thiruvananthapuram</p>
+                            </div>
+                            <div class="item-meta">
+                                <span class="badge badge-recommended">Recommended</span>
+                                <div class="text-right">
+                                    <p class="meta-main">45 mins</p>
+                                    <p class="meta-sub">2.1 km</p>
+                                </div>
+                                <svg class="chevron-icon text-emerald" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Moderate Crowd -->
+                        <div class="hospital-item">
+                            <div>
+                                <h3 class="item-title">General Hospital</h3>
+                                <p class="item-subtitle">Pattom, Thiruvananthapuram</p>
+                            </div>
+                            <div class="item-meta">
+                                <span class="status-label status-amber">Moderate Crowd</span>
+                                <div class="text-right">
+                                    <p class="meta-main">1 hr 10 mins</p>
+                                    <p class="meta-sub">3.8 km</p>
+                                </div>
+                                <svg class="chevron-icon text-gray" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Low Crowd -->
+                        <div class="hospital-item">
+                            <div>
+                                <h3 class="item-title">District Hospital</h3>
+                                <p class="item-subtitle">Neyyattinkara</p>
+                            </div>
+                            <div class="item-meta">
+                                <span class="status-label status-emerald">Low Crowd</span>
+                                <div class="text-right">
+                                    <p class="meta-main">1 hr 25 mins</p>
+                                    <p class="meta-sub">12.5 km</p>
+                                </div>
+                                <svg class="chevron-icon text-gray" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="footer-link">
+                        View more hospitals
+                        <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- COLUMN 2: Doctor Status -->
+                <div class="card card-column">
+                    <div>
+                        <div class="header-between">
+                            <h2 class="card-title">Doctor Status</h2>
+                            <a href="#" class="link-action">View All</a>
+                        </div>
+
+                        <!-- Doctor 1 -->
+                        <div class="doctor-row">
+                            <div class="doctor-info">
+                                <img class="doctor-avatar"
+                                    src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80"
+                                    alt="Dr. Rajesh Kumar">
+                                <div>
+                                    <h3 class="item-title">Dr. Rajesh Kumar</h3>
+                                    <p class="item-subtitle">General Medicine</p>
+                                </div>
+                            </div>
+                            <span class="badge badge-emerald">Available</span>
+                        </div>
+
+                        <!-- Doctor 2 -->
+                        <div class="doctor-row">
+                            <div class="doctor-info">
+                                <img class="doctor-avatar"
+                                    src="https://images.unsplash.com/photo-1594824813566-88855ce7890f?w=100&auto=format&fit=crop&q=80"
+                                    alt="Dr. Anitha Nair">
+                                <div>
+                                    <h3 class="item-title">Dr. Anitha Nair</h3>
+                                    <p class="item-subtitle">Pediatrics</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="badge badge-amber">On Break</span>
+                                <p class="doctor-note">Back at 11:30 AM</p>
+                            </div>
+                        </div>
+
+                        <!-- Doctor 3 -->
+                        <div class="doctor-row border-none">
+                            <div class="doctor-info">
+                                <img class="doctor-avatar"
+                                    src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80"
+                                    alt="Dr. Vivek Das">
+                                <div>
+                                    <h3 class="item-title">Dr. Vivek Das</h3>
+                                    <p class="item-subtitle">Orthopedics</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="badge badge-rose">OP Ended</span>
+                                <p class="doctor-note">Next OP: Tomorrow</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="footer-link">
+                        View full schedule
+                        <svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- COLUMN 3: Medicine, Camps & Blood Banks -->
+                <div class="stack-column">
+
+                    <!-- Medicine Availability Card -->
+                    <div class="card p-compact">
+                        <div class="header-between mb-compact">
+                            <div class="header-inline">
+                                <svg class="header-icon text-emerald" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                                <h2 class="card-title-sm">Medicine Availability</h2>
+                            </div>
+                            <a href="#" class="link-action">View All</a>
+                        </div>
+                        <div class="medicine-banner">
+                            <div class="banner-content">
+                                <div class="check-circle">
+                                    <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="banner-title">All medicines in stock</p>
+                                    <p class="banner-subtitle">for your prescription</p>
+                                </div>
+                            </div>
+                            <svg class="chevron-icon text-emerald" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Health Camps Card -->
+                    <div class="card p-compact card-sky">
+                        <div class="header-between mb-compact">
+                            <div class="header-inline">
+                                <svg class="header-icon text-sky" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <h2 class="card-title-sm">Upcoming Health Camps</h2>
+                            </div>
+                            <a href="#" class="link-action">View All</a>
+                        </div>
+                        <div class="content-between">
+                            <div class="banner-content">
+                                <div class="text-sky">
+                                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="item-title">Free General Health Checkup Camp</p>
+                                    <p class="item-subtitle">Govt. Hospital, Kattakada</p>
+                                </div>
+                            </div>
+                            <div class="date-badge">
+                                <p class="date-number">25</p>
+                                <p class="date-month">May</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blood Banks Near You Card -->
+                    <div class="card p-compact card-rose">
+                        <div class="header-between mb-compact">
+                            <div class="header-inline">
+                                <svg class="header-icon text-rose" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <h2 class="card-title-sm">Blood Banks Near You</h2>
+                            </div>
+                            <a href="#" class="link-action">View All</a>
+                        </div>
+                        <div class="content-between">
+                            <div class="banner-content">
+                                <div class="text-rose">
+                                    <svg class="feature-icon-sm" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="item-title">District Blood Bank</p>
+                                    <p class="item-subtitle">Thiruvananthapuram</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="blood-group">A+</p>
+                                <p class="blood-status">Available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            
+        </div>
+
+        <!-- FOOTER  -->
+        <footer>
+            <div id="footer_left">
+                <img src="assets/images/govt.png" alt="">
+                <span style="line-height: 1.4;">Government of Kerala<br>Health & Family Welfare Department</span>
+                <span style="margin-left: 40px;">© 2025 QueueCare Kerala.All rights reserved</span>
+            </div>
+            <div id="footer_right">
+                <ul id="social_links">
+                    <li id="facebook" class="social_link"><img src="assets/images/facebook.png" alt=""></li>
+                    <li id="twitter" class="social_link"><img src="assets/images/twitter.png" alt=""></li>
+                    <li id="instagram" class="social_link"><img src="assets/images/instagram.png" alt=""></li>
+                    <li id="youtube" class="social_link"><img src="assets/images/youtube.png" alt=""></li>
+                </ul>
+                <a href="">Privacy Policy</a>
+                <a href="">Terms & Conditions</a>
+            </div>
+        </footer>
+        <!-- FOOTER  -->
+
     </main>
-    
-    
+
+
 </body>
 
 </html>
