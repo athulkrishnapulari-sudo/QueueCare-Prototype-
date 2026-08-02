@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--background);
   color: var(--text);
-  
+  overflow-x: hidden;
 }
 
 a {
@@ -837,7 +838,6 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 .card--doctor-status {
@@ -884,101 +884,12 @@ main {
   margin: 0 0 0.25rem;
 }
 
-#hospital_display {
-  margin-top: 0.75rem;
-}
-
-.hospital-display-area {
-  flex: 1 1 auto;
-}
-
-.link-btn-wrapper {
-  margin-top: auto;
-  display: block;
-}
-
-.hospital-loading {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.25rem 0;
-}
-
-.hospital-loading__header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.25rem;
-}
-
-.hospital-loading__spinner {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 3px solid #d1fae5;
-  border-top-color: var(--primary);
-  animation: hospital-spin 0.9s linear infinite;
-  flex-shrink: 0;
-}
-
-.hospital-loading__title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.hospital-loading__subtitle {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 0.2rem;
-}
-
-.hospital-loading__card {
-  background: linear-gradient(90deg, #f8fafc 0%, #f3f4f6 50%, #f8fafc 100%);
-  background-size: 200% 100%;
-  animation: hospital-shimmer 1.2s linear infinite;
-  border-radius: 0.9rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid #e5e7eb;
-}
-
-.hospital-loading__line {
-  height: 0.7rem;
-  border-radius: 999px;
-  background: rgba(15, 118, 110, 0.17);
-  margin-bottom: 0.55rem;
-}
-
-.hospital-loading__line:last-child {
-  margin-bottom: 0;
-}
-
-.hospital-loading__line--short {
-  width: 55%;
-}
-
-@keyframes hospital-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes hospital-shimmer {
-  from {
-    background-position: 200% 0;
-  }
-  to {
-    background-position: -200% 0;
-  }
-}
-
 .list-item {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0.875rem 0;
   border-bottom: 1px solid #f3f4f6;
-  gap: 0.75rem;
 }
 
 .list-item__content {
