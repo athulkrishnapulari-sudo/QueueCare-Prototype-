@@ -1,3 +1,19 @@
+window.onload = () => {
+
+    const loggedIn = localStorage.getItem("loggedIn");
+
+    if (loggedIn !== "true") {
+        window.location.replace("index.html");
+        return;
+    }
+
+    console.log("Page loaded");
+    profile_name1.innerHTML=localStorage.getItem('Name')
+    profile_name2.innerHTML=localStorage.getItem('Name')
+    UpdateHospitals();
+
+};
+
 // ====================================================
 //               VARIABLES AND CONSTANTS
 // ====================================================
@@ -14,6 +30,7 @@ const speed = 25; //for calculating time
 
 const profile_drop_btn = document.getElementById("profile_drop_btn");
 const navMenu_toggle_button = document.getElementsByClassName("menu-toggle")[0];
+const logout = document.getElementsByClassName('logout')[0];
 
 // =====================================================
 
@@ -31,6 +48,8 @@ const nav_menu = document.getElementsByClassName("mobile-nav")[0];
 // =====================================================
 
 const hospital_display = document.getElementById("hospital_display");
+const profile_name1 = document.getElementById('profile_name1');
+const profile_name2 = document.getElementById('profile_name2');
 
 // =====================================================
 
@@ -278,7 +297,14 @@ main();
 // =====================================================
 
 
-window.onload = function () {
-    console.log("Page loaded");
-    UpdateHospitals();
-};
+
+// =====================================================
+//                          LOGOUT 
+// =====================================================
+
+logout.addEventListener('click',()=>{
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("Phone");
+    localStorage.removeItem("Name");
+    window.location.replace("index.html");
+})

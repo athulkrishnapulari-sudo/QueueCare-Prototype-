@@ -1,543 +1,512 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QCare Kerala - Auth Portal</title>
+    <script defer src="index.js"></script>
+    <meta
+      name="description"
+      content="Securely access healthcare services with a professional login portal designed for QCare Kerala."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QueueCare Kerala</title>
-  <link rel="stylesheet" href="main.css" />
-  <script defer src="script.js"></script>
-</head>
+      * {
+        box-sizing: border-box;
+      }
 
-<body>
-  <div class="app-shell">
-    <nav class="navbar">
-      <div class="navbar__inner">
-        <div class="navbar__row">
-          <a class="brand" href="#">
-            <img src="assets/images/logo.png" alt="QueueCare Kerala Logo" />
-            <div>
-              <div class="brand__title">QueueCare</div>
-              <div class="brand__tag">Kerala</div>
-            </div>
-          </a>
+      html, body {
+        margin: 0;
+        min-height: 100vh;
+      }
 
-          <div class="desktop-nav">
-            <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link" href="#">Book Appointment</a>
-            <a class="nav-link" href="#">Live Queue</a>
-            <a class="nav-link" href="hospitals.html">Hospitals</a>
-            <a class="nav-link" href="#">Health Camps</a>
-            <a class="nav-link" href="#">Blood Bank</a>
-            <a class="nav-link" href="#">Feedback</a>
-            <a class="nav-link" href="#">Help</a>
-          </div>
+      body {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+      }
 
-          <div class="navbar__actions">
-            <div class="language-picker">
-              <label class="language-picker__label" for="language-select" aria-label="Select language">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                  </path>
+      .page {
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            transparent 10%,
+            rgba(255, 255, 255, 0.2) 60%,
+            rgba(255, 255, 255, 0.5) 75%,
+            rgba(255, 255, 255, 0.8) 90%,
+            #fff 100%
+          ),
+          url("assets/images/LOGIN_BACK.png") center/cover no-repeat;
+        filter: blur(8px);
+        transform: scale(1.05);
+        z-index: 1;
+      }
+
+      /* Left Side Branding Panel */
+      .panel-left {
+        position: relative;
+        width: 55%;
+        padding: 40px;
+        color: #0f172a;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 10;
+      }
+
+      .panel-left h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0 0 10px;
+      }
+
+      .panel-left h3 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin: 0 0 15px;
+      }
+
+      .panel-left p {
+        font-size: 1rem;
+        max-width: 420px;
+        line-height: 1.6;
+        opacity: 0.95;
+        margin: 0;
+      }
+
+      /* Right Side Form Panel */
+      .panel-right {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        z-index: 10;
+      }
+
+      .auth-stack {
+        width: 100%;
+        max-width: 500px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .card {
+        width: 100%;
+        background-color: white;
+        backdrop-filter: blur(24px);
+        border-radius: 24px;
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        box-shadow: 0 8px 40px rgba(5, 150, 105, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04);
+        padding: 32px;
+      }
+
+      .mobile-brand {
+        display: none;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+
+      .mobile-brand .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        background: #059669;
+        color: white;
+        display: grid;
+        place-items: center;
+      }
+
+      .mobile-brand .brand-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .card-header {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.03em;
+      }
+
+      .card-subtitle {
+        margin: 12px 0 28px;
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .field-group {
+        display: grid;
+        gap: 20px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #475569;
+        font-weight: 700;
+      }
+
+      .input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-radius: 22px;
+        background: #f9fafb;
+        border: 1.5px solid rgba(16, 185, 129, 0.2);
+        padding: 9px 13px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .input-wrap.focused {
+        border-color: #059669;
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
+      }
+
+      .input-wrap .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+      }
+
+      .input-wrap .country-code {
+        border-right: 1px solid rgba(16, 185, 129, 0.2);
+        padding-right: 10px;
+        color: #64748b;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .input-wrap input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 0.95rem;
+        color: #0f172a;
+        padding: 10px 0;
+      }
+
+      .input-wrap .toggle-button {
+        border: none;
+        background: transparent;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .checkbox-row label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .checkbox-button {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        border: 2px solid rgba(16, 185, 129, 0.4);
+        background: transparent;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .checkbox-button.checked {
+        border-color: #059669;
+        background: #059669;
+      }
+
+      .checkbox-button svg {
+        width: 10px;
+        height: 8px;
+        stroke: white;
+        stroke-width: 1.8;
+      }
+
+      .primary-button {
+        width: 100%;
+        border: none;
+        border-radius: 22px;
+        padding: 14px 18px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(5, 150, 105, 0.35);
+      }
+
+      .primary-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 28px rgba(5, 150, 105, 0.5);
+      }
+
+      .auth-switch {
+        display: inline-block;
+        margin-top: 14px;
+        color: #059669;
+        font-weight: 700;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .auth-switch:hover {
+        text-decoration: underline;
+      }
+
+      .signin-aux {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -4px;
+      }
+
+      .forgot-link {
+        color: #059669;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .forgot-link:hover {
+        text-decoration: underline;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .panel-left {
+          display: none;
+        }
+
+        .panel-right {
+          padding: 24px;
+        }
+
+        .mobile-brand {
+          display: flex;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          flex-direction: column;
+        }
+
+        .panel-right {
+          min-height: 100vh;
+          padding: 20px;
+        }
+
+        .card {
+          border-radius: 22px;
+          padding: 28px 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- Left Branding Panel -->
+      <section class="panel-left">
+        <h1>QueueCare Kerala</h1>
+        <h3>Skip the Queue. Save Your Time.</h3>
+        <p>
+          Book OP appointments online, track live queues, receive digital tokens, and experience hassle-free hospital visits.
+        </p>
+      </section>
+
+      <!-- Right Authentication Panel -->
+      <section class="panel-right">
+        <div class="auth-stack">
+          <!-- Sign In Card -->
+          <div class="card" id="signinFormCard">
+            <div class="mobile-brand">
+              <div class="brand-mark">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/>
                 </svg>
-                <select id="language-select" class="language-picker__select">
-                  <option value="en">English</option>
-                  <option value="ml">മലയാളം</option>
-                </select>
-              </label>
-            </div>
-            <div class="profile-chip" id="profile_drop_btn">
-              <div class="profile-avatar">AK</div>
-              <div>
-                <div style="font-size: 0.75rem; font-weight: 600; color: #1f2937">
-                  Athul Krishna
-                </div>
-                <div style="font-size: 0.6rem; color: #9ca3af">
-                  Good morning!
-                </div>
               </div>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
-          </div>
-          <div id="profile_dropDown">
-            <div class="profileHeader">
-              <div class="profileAvatar">
-                <i class="bi bi-person-circle"></i>
-              </div>
-              <div class="profileInfo">
-                <h4>Athul Krishna</h4>
-                <p>athul@example.com</p>
-              </div>
+              <div class="brand-title">QCare Kerala</div>
             </div>
 
-            <hr />
+            <h1 class="card-header">Welcome Back!</h1>
+            <p class="card-subtitle">Sign in to continue to your healthcare dashboard</p>
 
-            <button class="dropDownItem">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </button>
-
-            <button class="dropDownItem">
-              <i class="bi bi-calendar-check"></i>
-              <span>My Appointments</span>
-            </button>
-
-            <button class="dropDownItem">
-              <i class="bi bi-gear"></i>
-              <span>Settings</span>
-            </button>
-
-            <button class="dropDownItem">
-              <i class="bi bi-translate"></i>
-              <span>Language</span>
-            </button>
-
-            <button class="dropDownItem logout">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Logout</span>
-            </button>
-          </div>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="mobile-nav">
-        <a href="index.html">Home</a>
-        <a href="#">Book Appointment</a>
-        <a href="#">Live Queue</a>
-        <a href="hospitals.html">Hospitals</a>
-        <a href="#">Health Camps</a>
-        <a href="#">Blood Bank</a>
-        <a href="#">Feedback</a>
-        <a href="#">Help</a>
-      </div>
-    </nav>
-
-    <main>
-      <section class="hero">
-        <div class="hero__inner">
-          <div class="hero__grid">
-            <div>
-              <h1>Smart Queue. Better Care. <span>Better Kerala.</span></h1>
-              <p>
-                Book OP appointments, track live queues, and get smarter
-                healthcare — all in one place. Serving over 2 crore citizens
-                across Kerala.
-              </p>
-              <div class="hero__actions">
-                <button class="btn-primary" type="button">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
-                  Book OP Appointment
-                </button>
-                <button class="btn-secondary" type="button">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                  </svg>
-                  Live Queue Status
-                </button>
-              </div>
-            </div>
-
-            <div class="token-card">
-              <div class="token-card__header">
-                <div>
-                  <div class="token-card__eyebrow">Your Current Token</div>
-                  <div class="token-card__number">OP 245</div>
-                </div>
-                <div class="token-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-                    <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-                    <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-                    <circle cx="17.5" cy="17.5" r="3.5"></circle>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="token-meta">
-                <div class="token-meta__row">
-                  <span class="hero-pill__dot"></span><strong>General Medicine</strong>
-                </div>
-                <div class="token-meta__row">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="7" width="20" height="14" rx="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                  Medical College Hospital
-                </div>
-                <div class="token-meta__row">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Thiruvananthapuram
-                </div>
-              </div>
-
-              <div class="token-divider"></div>
-
-              <div class="token-stats">
-                <div class="token-stat">
-                  <div class="token-stat__label">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            <form class="field-group" id="signinForm" novalidate>
+              <div class="field">
+                <label for="signinMobile">Mobile Number</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72 12.44 12.44 0 0 0 .7 2.81 2 2 0 0 1-.45 2L8.09 9.91a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2-.45 12.44 12.44 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
-                    People Ahead
-                  </div>
-                  <strong>23</strong>
-                </div>
-                <div class="token-stat token-stat--wait">
-                  <div class="token-stat__label">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    Est. Wait
-                  </div>
-                  <strong>45<span> min</span></strong>
+                  </span>
+                  <span class="country-code">+91</span>
+                  <input id="signinMobile" name="Phone" type="tel" maxlength="10" placeholder="98765 43210" />
                 </div>
               </div>
 
-              <button class="view-queue-btn" type="button">
-                View Live Queue
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
+              <div class="field">
+                <label for="signinPassword">Password</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <input id="signinPassword" type="password" name="Password" placeholder="Enter your password" />
+                </div>
+              </div>
+
+              <div class="signin-aux">
+                <a href="#forgotPassword" class="forgot-link">Forgot password?</a>
+              </div>
+
+              <button type="submit"  class="primary-button">Sign In</button>
+              <a href="#registerFormCard" class="auth-switch" data-target="register">Create new account</a>
+            </form>
+          </div>
+
+          <!-- Register Card -->
+          <div class="card hidden" id="registerFormCard">
+            <h1 class="card-header">Welcome to QCare</h1>
+            <p class="card-subtitle">Create a new account to get started with QCare Kerala</p>
+
+            <form class="field-group" id="registerForm" novalidate>
+              <div class="field">
+                <label for="nameInput">Full Name</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <input id="nameInput" type="text" name="Name" placeholder="Enter your full name" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="mobileInput">Mobile Number</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72 12.44 12.44 0 0 0 .7 2.81 2 2 0 0 1-.45 2L8.09 9.91a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2-.45 12.44 12.44 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </span>
+                  <span class="country-code">+91</span>
+                  <input id="mobileInput" type="tel" name="Phone" maxlength="10" placeholder="98765 43210" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="passwordInput">Password</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <input id="passwordInput" type="password" name="Password" placeholder="Enter your password" />
+                  <button type="button" class="toggle-button" id="passwordToggle" aria-label="Show password">
+                    <svg id="eyeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="confirmPasswordInput">Confirm Password</label>
+                <div class="input-wrap">
+                  <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <input id="confirmPasswordInput" type="password" placeholder="Re-enter your password" />
+                </div>
+              </div>
+
+              <div class="checkbox-row">
+                <label>
+                  <button type="button" class="checkbox-button" id="termsButton" aria-pressed="false">
+                    <svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="checkmark hidden">
+                      <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                  I agree to the terms
+                </label>
+              </div>
+
+              <button type="submit" class="primary-button">
+                Register
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M13 6l6 6-6 6" />
                 </svg>
               </button>
-            </div>
+              <a href="#signinFormCard" class="auth-switch" data-target="signin">Already have an account</a>
+            </form>
           </div>
         </div>
       </section>
-
-      <section class="quick-actions">
-        <div class="quick-actions__grid">
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #f0fdfa; color: #0f766e">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-                <line x1="12" y1="15" x2="12" y2="19"></line>
-                <line x1="10" y1="17" x2="14" y2="17"></line>
-              </svg>
-            </div>
-            <span>Book Appointment</span>
-          </div>
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #f5f3ff; color: #7c3aed">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2l2.4 7.6H22l-6.4 4.7 2.4 7.6L12 17.3 5.9 21.9l2.4-7.6L2 9.6h7.6z"></path>
-              </svg>
-            </div>
-            <span>AI Department Suggestion</span>
-          </div>
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #f0f9ff; color: #0284c7">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10.5 20.5a7 7 0 1 1-9.9-9.9l9.9 9.9z"></path>
-                <path d="m13.5 3.5 7 7"></path>
-                <line x1="7" y1="10.5" x2="10.5" y2="7"></line>
-              </svg>
-            </div>
-            <span>Medicine Availability</span>
-          </div>
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #f0fdf4; color: #16a34a">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="7" r="4"></circle>
-                <path d="M5.5 21a9 9 0 0 1 13 0"></path>
-                <line x1="12" y1="14" x2="12" y2="18"></line>
-                <line x1="10" y1="16" x2="14" y2="16"></line>
-              </svg>
-            </div>
-            <span>Doctor Status</span>
-          </div>
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #fff7ed; color: #ea580c">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="8" cy="6" r="3"></circle>
-                <circle cx="16" cy="6" r="3"></circle>
-                <path d="M2 21a7 7 0 0 1 12 0"></path>
-                <path d="M10 21a7 7 0 0 1 12 0"></path>
-              </svg>
-            </div>
-            <span>Family Booking</span>
-          </div>
-          <div class="action-card" tabindex="0">
-            <div class="action-icon" style="background: #fff1f2; color: #dc2626">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                <line x1="12" y1="7" x2="12" y2="13"></line>
-                <line x1="9" y1="10" x2="15" y2="10"></line>
-              </svg>
-            </div>
-            <span>Nearby Hospitals</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="dashboard">
-        <div class="dashboard__inner">
-          <div class="dashboard__grid">
-            <div class="card">
-              <div class="card__title-row">
-                <h3>Smart Hospital Recommendation</h3>
-                <div class="tag tag--ai">AI Powered</div>
-              </div>
-              <p class="card__subtitle">
-                Based on queue length, distance &amp; travel time
-              </p>
-              
-              <div id="hospital_display" class="hospital-display-area"></div>
-
-              <a href="hospitals.html" class="link-btn-wrapper"><button class="link-btn" type="button">
-                View more hospitals
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button></a>
-            </div>
-
-            <div class="card card--doctor-status">
-              <div class="card__title-row">
-                <h3>Doctor Status</h3>
-                <div class="live-pill">
-                  <div class="live-dot"></div>
-                  Live
-                </div>
-              </div>
-
-              <div class="doctor-item">
-                <div class="doctor-avatar" style="
-                      background: linear-gradient(135deg, #0f766e, #16a34a);
-                    ">
-                  RK
-                </div>
-                <div class="list-item__content">
-                  <div class="doctor-item__title-row">
-                    <span class="doctor-item__name">Dr. Rajesh Kumar</span>
-                    <span class="badge badge--available">Available</span>
-                  </div>
-                  <div class="doctor-item__dept">General Medicine</div>
-                </div>
-              </div>
-
-              <div class="doctor-item">
-                <div class="doctor-avatar" style="
-                      background: linear-gradient(135deg, #7c3aed, #ec4899);
-                    ">
-                  AN
-                </div>
-                <div class="list-item__content">
-                  <div class="doctor-item__title-row">
-                    <span class="doctor-item__name">Dr. Anitha Nair</span>
-                    <span class="badge badge--break">On Break</span>
-                  </div>
-                  <div class="doctor-item__dept">Pediatrics</div>
-                  <div class="doctor-item__note">Back at 11:30 AM</div>
-                </div>
-              </div>
-
-              <div class="doctor-item">
-                <div class="doctor-avatar" style="
-                      background: linear-gradient(135deg, #2563eb, #0284c7);
-                    ">
-                  VD
-                </div>
-                <div class="list-item__content">
-                  <div class="doctor-item__title-row">
-                    <span class="doctor-item__name">Dr. Vivek Das</span>
-                    <span class="badge badge--ended">OP Ended</span>
-                  </div>
-                  <div class="doctor-item__dept">Orthopedics</div>
-                  <div class="doctor-item__note">Next OP: Tomorrow</div>
-                </div>
-              </div>
-
-              <div class="doctor-item">
-                <div class="doctor-avatar" style="
-                      background: linear-gradient(135deg, #dc2626, #f43f5e);
-                    ">
-                  SM
-                </div>
-                <div class="list-item__content">
-                  <div class="doctor-item__title-row">
-                    <span class="doctor-item__name">Dr. Sneha Menon</span>
-                    <span class="badge badge--available">Available</span>
-                  </div>
-                  <div class="doctor-item__dept">Dermatology</div>
-                </div>
-              </div>
-
-              <button class="link-btn" type="button">
-                View full schedule
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-
-            <div class="stacked-card-column">
-              <div class="card card--stack">
-                <div class="small-card">
-                  <div class="small-card__icon" style="background: #f0fdf4; color: #16a34a">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="small-card__title">Medicine Availability</div>
-                    <div class="small-card__text" style="color: #16a34a; font-weight: 600">
-                      All medicines in stock
-                    </div>
-                    <div class="small-card__muted">for your prescription</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card card--stack">
-                <div class="small-card">
-                  <div class="small-card__icon" style="background: #eff6ff; color: #2563eb">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3.5 21 12 3l8.5 18"></path>
-                      <path d="M8.5 21 12 13l3.5 8"></path>
-                      <line x1="2" y1="21" x2="22" y2="21"></line>
-                    </svg>
-                  </div>
-                  <div style="flex: 1">
-                    <div class="small-card__title">Upcoming Health Camps</div>
-                    <div class="small-card__text">
-                      Free General Health Checkup Camp
-                    </div>
-                    <div class="small-card__muted">
-                      Govt. Hospital, Kattakada
-                    </div>
-                  </div>
-                  <div class="small-card__date">
-                    <strong>25</strong><span>May</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card card--stack">
-                <div class="small-card">
-                  <div class="small-card__icon" style="background: #fff1f2; color: #dc2626">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-                    </svg>
-                  </div>
-                  <div style="flex: 1">
-                    <div class="small-card__title">Blood Banks Near You</div>
-                    <div class="small-card__text">District Blood Bank</div>
-                    <div class="small-card__muted">Thiruvananthapuram</div>
-                  </div>
-                  <div class="small-card__blood">
-                    <strong>A+</strong><span>Available</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <img src="assets/images/govt.png" alt="Govt of Kerala" />
-          <div>
-            <div class="footer__title">Government of Kerala</div>
-            <div class="footer__meta">
-              Health &amp; Family Welfare Department
-            </div>
-            <div class="footer__copy">
-              © 2025 QueueCare Kerala. All rights reserved.
-            </div>
-          </div>
-        </div>
-
-        <div class="footer__right">
-          <div class="footer__social">
-            <a class="social-link" href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24"
-                fill="currentColor">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg></a>
-            <a class="social-link" href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24"
-                fill="currentColor">
-                <path
-                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-                </path>
-              </svg></a>
-            <a class="social-link" href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg></a>
-            <a class="social-link" href="#" aria-label="YouTube"><svg>
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                >
-                <path
-                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z">
-                </path>
-                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"></polygon>
-              </svg></a>
-          </div>
-          <div class="footer__links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms &amp; Conditions</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-</body>
-
+    </div>
+  </body>
 </html>
