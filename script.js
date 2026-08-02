@@ -4,7 +4,6 @@
 
 let latitude;
 let longitude;
-let Hospitals = [];
 const speed = 25; //for calculating time
 
 // ====================================================
@@ -109,12 +108,30 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     (R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))).toFixed(2),
   );
 }
+function filterGovernmentHospitals(hospitals) {
+    const keywords = [
+        "govt",
+        "government",
+        "thaluk",
+        "taluk",
+        "district",
+        "general"
+    ];
+
+    return hospitals.filter(hospital => {
+        const name = hospital.name.toLowerCase();
+
+        return keywords.some(keyword => 
+            name.includes(keyword)
+        );
+    });
+}
 async function getNearbyHospitals(lat, lon) {
   console.log("Searching hospitals near:", lat, lon);
 
   const query = `
-  [out:json][timeout:5];
-  node["amenity"="hospital"](around:3000,${lat},${lon});
+  [out:json][timeout:15];
+  node["amenity"="hospital"](around:10000,${lat},${lon});
   out;
   `;
 
@@ -141,10 +158,10 @@ async function getNearbyHospitals(lat, lon) {
 
     // Sort nearest first
     Hospitals.sort((a, b) => a.distance - b.distance);
-
-    console.log("Sorted Hospitals:", Hospitals);
-    localStorage.setItem("HospitalsSorted", JSON.stringify(Hospitals));
-    return Hospitals;
+    const governmentHospitals = filterGovernmentHospitals(Hospitals);
+    console.log("Sorted Hospitals:", governmentHospitals);
+    localStorage.setItem("HospitalsSorted", JSON.stringify(governmentHospitals));
+    return governmentHospitals;
   } catch (error) {
     console.log("API Error:", error);
     return [];
