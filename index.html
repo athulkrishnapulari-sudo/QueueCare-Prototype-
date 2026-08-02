@@ -1,328 +1,632 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QueueCare Kerala</title>
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <nav class="navbar">
-        <div class="navbar__inner">
-          <div class="navbar__row">
-            <a class="brand" href="#">
-              <img src="assets/images/logo.png" alt="QueueCare Kerala Logo" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QueueCare Kerala</title>
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <nav class="navbar">
+      <div class="navbar__inner">
+        <div class="navbar__row">
+          <a class="brand" href="#">
+            <img src="assets/images/logo.png" alt="QueueCare Kerala Logo" />
+            <div>
+              <div class="brand__title">QueueCare</div>
+              <div class="brand__tag">Kerala</div>
+            </div>
+          </a>
+
+          <div class="desktop-nav">
+            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#">Book Appointment</a>
+            <a class="nav-link" href="#">Live Queue</a>
+            <a class="nav-link" href="#">Hospitals</a>
+            <a class="nav-link" href="#">Health Camps</a>
+            <a class="nav-link" href="#">Blood Bank</a>
+            <a class="nav-link" href="#">Feedback</a>
+            <a class="nav-link" href="#">Help</a>
+          </div>
+
+          <div class="navbar__actions">
+            <div class="language-picker">
+              <label class="language-picker__label" for="language-select" aria-label="Select language">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                  </path>
+                </svg>
+                <select id="language-select" class="language-picker__select">
+                  <option value="en">English</option>
+                  <option value="ml">മലയാളം</option>
+                </select>
+              </label>
+            </div>
+            <div class="profile-chip" id="profile_drop_btn">
+              <div class="profile-avatar">AK</div>
               <div>
-                <div class="brand__title">QueueCare</div>
-                <div class="brand__tag">Kerala</div>
-              </div>
-            </a>
-
-            <div class="desktop-nav">
-              <a class="nav-link" href="#">Home</a>
-              <a class="nav-link" href="#">Book Appointment</a>
-              <a class="nav-link" href="#">Live Queue</a>
-              <a class="nav-link" href="#">Hospitals</a>
-              <a class="nav-link" href="#">Health Camps</a>
-              <a class="nav-link" href="#">Blood Bank</a>
-              <a class="nav-link" href="#">Feedback</a>
-              <a class="nav-link" href="#">Help</a>
-            </div>
-
-            <div class="navbar__actions">
-              <button class="btn-ghost" type="button">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                English
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="profile-chip">
-                <div class="profile-avatar">AK</div>
-                <div>
-                  <div style="font-size: 0.75rem; font-weight: 600; color: #1f2937;">Athul Krishna</div>
-                  <div style="font-size: 0.6rem; color: #9ca3af;">Good morning!</div>
+                <div style="font-size: 0.75rem; font-weight: 600; color: #1f2937">
+                  Athul Krishna
                 </div>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <div style="font-size: 0.6rem; color: #9ca3af">
+                  Good morning!
+                </div>
+              </div>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div id="profile_dropDown">
+            <div class="profileHeader">
+              <div class="profileAvatar">
+                <i class="bi bi-person-circle"></i>
+              </div>
+              <div class="profileInfo">
+                <h4>Athul Krishna</h4>
+                <p>athul@example.com</p>
               </div>
             </div>
 
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <hr />
+
+            <button class="dropDownItem">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </button>
+
+            <button class="dropDownItem">
+              <i class="bi bi-calendar-check"></i>
+              <span>My Appointments</span>
+            </button>
+
+            <button class="dropDownItem">
+              <i class="bi bi-gear"></i>
+              <span>Settings</span>
+            </button>
+
+            <button class="dropDownItem">
+              <i class="bi bi-translate"></i>
+              <span>Language</span>
+            </button>
+
+            <button class="dropDownItem logout">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Logout</span>
             </button>
           </div>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
+      </div>
 
-        <div class="mobile-nav">
-          <a href="#">Home</a>
-          <a href="#">Book Appointment</a>
-          <a href="#">Live Queue</a>
-          <a href="#">Hospitals</a>
-          <a href="#">Health Camps</a>
-          <a href="#">Blood Bank</a>
-          <a href="#">Feedback</a>
-          <a href="#">Help</a>
-        </div>
-      </nav>
+      <div class="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#">Book Appointment</a>
+        <a href="#">Live Queue</a>
+        <a href="#">Hospitals</a>
+        <a href="#">Health Camps</a>
+        <a href="#">Blood Bank</a>
+        <a href="#">Feedback</a>
+        <a href="#">Help</a>
+      </div>
+    </nav>
 
-      <main>
-        <section class="hero">
-          <div class="hero__inner">
-            <div class="hero__grid">
-              <div>
-                
-                <h1>Smart Queue. Better Care. <span>Better Kerala.</span></h1>
-                <p>Book OP appointments, track live queues, and get smarter healthcare — all in one place. Serving over 2 crore citizens across Kerala.</p>
-                <div class="hero__actions">
-                  <button class="btn-primary" type="button">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    Book OP Appointment
-                  </button>
-                  <button class="btn-secondary" type="button">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                    Live Queue Status
-                  </button>
-                </div>
-
-                
-              </div>
-
-              <div class="token-card">
-                <div class="token-card__header">
-                  <div>
-                    <div class="token-card__eyebrow">Your Current Token</div>
-                    <div class="token-card__number">OP 245</div>
-                  </div>
-                  <div class="token-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><circle cx="17.5" cy="17.5" r="3.5"></circle></svg>
-                  </div>
-                </div>
-
-                <div class="token-meta">
-                  <div class="token-meta__row"><span class="hero-pill__dot"></span><strong>General Medicine</strong></div>
-                  <div class="token-meta__row"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg> Medical College Hospital</div>
-                  <div class="token-meta__row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg> Thiruvananthapuram</div>
-                </div>
-
-                <div class="token-divider"></div>
-
-                <div class="token-stats">
-                  <div class="token-stat">
-                    <div class="token-stat__label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> People Ahead</div>
-                    <strong>23</strong>
-                  </div>
-                  <div class="token-stat token-stat--wait">
-                    <div class="token-stat__label"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Est. Wait</div>
-                    <strong>45<span> min</span></strong>
-                  </div>
-                </div>
-
-                <button class="view-queue-btn" type="button">View Live Queue <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="quick-actions">
-          <div class="quick-actions__grid">
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#f0fdfa;color:#0f766e"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="12" y1="15" x2="12" y2="19"></line><line x1="10" y1="17" x2="14" y2="17"></line></svg></div>
-              <span>Book Appointment</span>
-            </div>
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#f5f3ff;color:#7c3aed"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.6H22l-6.4 4.7 2.4 7.6L12 17.3 5.9 21.9l2.4-7.6L2 9.6h7.6z"></path></svg></div>
-              <span>AI Department Suggestion</span>
-            </div>
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#f0f9ff;color:#0284c7"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5a7 7 0 1 1-9.9-9.9l9.9 9.9z"></path><path d="m13.5 3.5 7 7"></path><line x1="7" y1="10.5" x2="10.5" y2="7"></line></svg></div>
-              <span>Medicine Availability</span>
-            </div>
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#f0fdf4;color:#16a34a"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"></circle><path d="M5.5 21a9 9 0 0 1 13 0"></path><line x1="12" y1="14" x2="12" y2="18"></line><line x1="10" y1="16" x2="14" y2="16"></line></svg></div>
-              <span>Doctor Status</span>
-            </div>
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#fff7ed;color:#ea580c"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="6" r="3"></circle><circle cx="16" cy="6" r="3"></circle><path d="M2 21a7 7 0 0 1 12 0"></path><path d="M10 21a7 7 0 0 1 12 0"></path></svg></div>
-              <span>Family Booking</span>
-            </div>
-            <div class="action-card" tabindex="0">
-              <div class="action-icon" style="background:#fff1f2;color:#dc2626"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><line x1="12" y1="7" x2="12" y2="13"></line><line x1="9" y1="10" x2="15" y2="10"></line></svg></div>
-              <span>Nearby Hospitals</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="dashboard">
-          <div class="dashboard__inner">
-            
-
-            <div class="dashboard__grid">
-              <div class="card">
-                <div class="card__title-row">
-                  <h3>Smart Hospital Recommendation</h3>
-                  <div class="tag tag--ai">AI Powered</div>
-                </div>
-                <p class="card__subtitle">Based on queue length, distance &amp; travel time</p>
-
-                <div class="list-item">
-                  <div class="list-item__content">
-                    <div class="list-item__title-row">
-                      <span class="list-item__title">Medical College Hospital</span>
-                      <span class="badge badge--recommended">Recommended</span>
-                    </div>
-                    <div class="list-item__meta">Thiruvananthapuram</div>
-                    <div class="meta-row">
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 45 mins</div>
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg> 2.1 km</div>
-                    </div>
-                  </div>
-                  <button class="book-btn" type="button">Book</button>
-                </div>
-
-                <div class="list-item">
-                  <div class="list-item__content">
-                    <div class="list-item__title-row">
-                      <span class="list-item__title">General Hospital</span>
-                      <span class="badge badge--moderate">Moderate Crowd</span>
-                    </div>
-                    <div class="list-item__meta">Pattom, Thiruvananthapuram</div>
-                    <div class="meta-row">
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 1 hr 10 mins</div>
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg> 3.8 km</div>
-                    </div>
-                  </div>
-                  <button class="book-btn" type="button">Book</button>
-                </div>
-
-                <div class="list-item">
-                  <div class="list-item__content">
-                    <div class="list-item__title-row">
-                      <span class="list-item__title">District Hospital</span>
-                      <span class="badge badge--low">Low Crowd</span>
-                    </div>
-                    <div class="list-item__meta">Neyyattinkara</div>
-                    <div class="meta-row">
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 1 hr 25 mins</div>
-                      <div class="meta-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg> 12.5 km</div>
-                    </div>
-                  </div>
-                  <button class="book-btn" type="button">Book</button>
-                </div>
-
-                <button class="link-btn" type="button">View more hospitals <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-              </div>
-
-              <div class="card">
-                <div class="card__title-row">
-                  <h3>Doctor Status</h3>
-                  <div class="live-pill"><div class="live-dot"></div> Live</div>
-                </div>
-
-                <div class="doctor-item">
-                  <div class="doctor-avatar" style="background:linear-gradient(135deg,#0f766e,#16a34a)">RK</div>
-                  <div class="list-item__content">
-                    <div class="doctor-item__title-row">
-                      <span class="doctor-item__name">Dr. Rajesh Kumar</span>
-                      <span class="badge badge--available">Available</span>
-                    </div>
-                    <div class="doctor-item__dept">General Medicine</div>
-                  </div>
-                </div>
-
-                <div class="doctor-item">
-                  <div class="doctor-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">AN</div>
-                  <div class="list-item__content">
-                    <div class="doctor-item__title-row">
-                      <span class="doctor-item__name">Dr. Anitha Nair</span>
-                      <span class="badge badge--break">On Break</span>
-                    </div>
-                    <div class="doctor-item__dept">Pediatrics</div>
-                    <div class="doctor-item__note">Back at 11:30 AM</div>
-                  </div>
-                </div>
-
-                <div class="doctor-item">
-                  <div class="doctor-avatar" style="background:linear-gradient(135deg,#2563eb,#0284c7)">VD</div>
-                  <div class="list-item__content">
-                    <div class="doctor-item__title-row">
-                      <span class="doctor-item__name">Dr. Vivek Das</span>
-                      <span class="badge badge--ended">OP Ended</span>
-                    </div>
-                    <div class="doctor-item__dept">Orthopedics</div>
-                    <div class="doctor-item__note">Next OP: Tomorrow</div>
-                  </div>
-                </div>
-
-                <button class="link-btn" type="button">View full schedule <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-              </div>
-
-              <div style="display:flex;flex-direction:column;gap:1rem;">
-                <div class="card card--stack">
-                  <div class="small-card">
-                    <div class="small-card__icon" style="background:#f0fdf4;color:#16a34a"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
-                    <div>
-                      <div class="small-card__title">Medicine Availability</div>
-                      <div class="small-card__text" style="color:#16a34a;font-weight:600">All medicines in stock</div>
-                      <div class="small-card__muted">for your prescription</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card card--stack">
-                  <div class="small-card">
-                    <div class="small-card__icon" style="background:#eff6ff;color:#2563eb"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 21 12 3l8.5 18"></path><path d="M8.5 21 12 13l3.5 8"></path><line x1="2" y1="21" x2="22" y2="21"></line></svg></div>
-                    <div style="flex:1">
-                      <div class="small-card__title">Upcoming Health Camps</div>
-                      <div class="small-card__text">Free General Health Checkup Camp</div>
-                      <div class="small-card__muted">Govt. Hospital, Kattakada</div>
-                    </div>
-                    <div class="small-card__date"><strong>25</strong><span>May</span></div>
-                  </div>
-                </div>
-
-                <div class="card card--stack">
-                  <div class="small-card">
-                    <div class="small-card__icon" style="background:#fff1f2;color:#dc2626"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></div>
-                    <div style="flex:1">
-                      <div class="small-card__title">Blood Banks Near You</div>
-                      <div class="small-card__text">District Blood Bank</div>
-                      <div class="small-card__muted">Thiruvananthapuram</div>
-                    </div>
-                    <div class="small-card__blood"><strong>A+</strong><span>Available</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <div class="footer__inner">
-          <div class="footer__brand">
-            <img src="assets/images/govt.png" alt="Govt of Kerala" />
+    <main>
+      <section class="hero">
+        <div class="hero__inner">
+          <div class="hero__grid">
             <div>
-              <div class="footer__title">Government of Kerala</div>
-              <div class="footer__meta">Health &amp; Family Welfare Department</div>
-              <div class="footer__copy">© 2025 QueueCare Kerala. All rights reserved.</div>
+              <h1>Smart Queue. Better Care. <span>Better Kerala.</span></h1>
+              <p>
+                Book OP appointments, track live queues, and get smarter
+                healthcare — all in one place. Serving over 2 crore citizens
+                across Kerala.
+              </p>
+              <div class="hero__actions">
+                <button class="btn-primary" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  Book OP Appointment
+                </button>
+                <button class="btn-secondary" type="button">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                  Live Queue Status
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div class="footer__right">
-            <div class="footer__social">
-              <a class="social-link" href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-              <a class="social-link" href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-              <a class="social-link" href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-              <a class="social-link" href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"></polygon></svg></a>
-            </div>
-            <div class="footer__links">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms &amp; Conditions</a>
+            <div class="token-card">
+              <div class="token-card__header">
+                <div>
+                  <div class="token-card__eyebrow">Your Current Token</div>
+                  <div class="token-card__number">OP 245</div>
+                </div>
+                <div class="token-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                    <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                    <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                    <circle cx="17.5" cy="17.5" r="3.5"></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="token-meta">
+                <div class="token-meta__row">
+                  <span class="hero-pill__dot"></span><strong>General Medicine</strong>
+                </div>
+                <div class="token-meta__row">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  Medical College Hospital
+                </div>
+                <div class="token-meta__row">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                    <circle cx="12" cy="9" r="2.5"></circle>
+                  </svg>
+                  Thiruvananthapuram
+                </div>
+              </div>
+
+              <div class="token-divider"></div>
+
+              <div class="token-stats">
+                <div class="token-stat">
+                  <div class="token-stat__label">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    People Ahead
+                  </div>
+                  <strong>23</strong>
+                </div>
+                <div class="token-stat token-stat--wait">
+                  <div class="token-stat__label">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Est. Wait
+                  </div>
+                  <strong>45<span> min</span></strong>
+                </div>
+              </div>
+
+              <button class="view-queue-btn" type="button">
+                View Live Queue
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
 
-    <script type="module" src="/src/main.js"></script>
-  </body>
+      <section class="quick-actions">
+        <div class="quick-actions__grid">
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #f0fdfa; color: #0f766e">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+                <line x1="12" y1="15" x2="12" y2="19"></line>
+                <line x1="10" y1="17" x2="14" y2="17"></line>
+              </svg>
+            </div>
+            <span>Book Appointment</span>
+          </div>
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #f5f3ff; color: #7c3aed">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l2.4 7.6H22l-6.4 4.7 2.4 7.6L12 17.3 5.9 21.9l2.4-7.6L2 9.6h7.6z"></path>
+              </svg>
+            </div>
+            <span>AI Department Suggestion</span>
+          </div>
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #f0f9ff; color: #0284c7">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.5 20.5a7 7 0 1 1-9.9-9.9l9.9 9.9z"></path>
+                <path d="m13.5 3.5 7 7"></path>
+                <line x1="7" y1="10.5" x2="10.5" y2="7"></line>
+              </svg>
+            </div>
+            <span>Medicine Availability</span>
+          </div>
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #f0fdf4; color: #16a34a">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="7" r="4"></circle>
+                <path d="M5.5 21a9 9 0 0 1 13 0"></path>
+                <line x1="12" y1="14" x2="12" y2="18"></line>
+                <line x1="10" y1="16" x2="14" y2="16"></line>
+              </svg>
+            </div>
+            <span>Doctor Status</span>
+          </div>
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #fff7ed; color: #ea580c">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="6" r="3"></circle>
+                <circle cx="16" cy="6" r="3"></circle>
+                <path d="M2 21a7 7 0 0 1 12 0"></path>
+                <path d="M10 21a7 7 0 0 1 12 0"></path>
+              </svg>
+            </div>
+            <span>Family Booking</span>
+          </div>
+          <div class="action-card" tabindex="0">
+            <div class="action-icon" style="background: #fff1f2; color: #dc2626">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                <line x1="12" y1="7" x2="12" y2="13"></line>
+                <line x1="9" y1="10" x2="15" y2="10"></line>
+              </svg>
+            </div>
+            <span>Nearby Hospitals</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard">
+        <div class="dashboard__inner">
+          <div class="dashboard__grid">
+            <div class="card">
+              <div class="card__title-row">
+                <h3>Smart Hospital Recommendation</h3>
+                <div class="tag tag--ai">AI Powered</div>
+              </div>
+              <p class="card__subtitle">
+                Based on queue length, distance &amp; travel time
+              </p>
+
+              <div class="list-item">
+                <div class="list-item__content">
+                  <div class="list-item__title-row">
+                    <span class="list-item__title">Medical College Hospital</span>
+                    <span class="badge badge--recommended">Recommended</span>
+                  </div>
+                  <div class="list-item__meta">Thiruvananthapuram</div>
+                  <div class="meta-row">
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      45 mins
+                    </div>
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                      </svg>
+                      2.1 km
+                    </div>
+                  </div>
+                </div>
+                <button class="book-btn" type="button">Book</button>
+              </div>
+
+              <div class="list-item">
+                <div class="list-item__content">
+                  <div class="list-item__title-row">
+                    <span class="list-item__title">General Hospital</span>
+                    <span class="badge badge--moderate">Moderate Crowd</span>
+                  </div>
+                  <div class="list-item__meta">
+                    Pattom, Thiruvananthapuram
+                  </div>
+                  <div class="meta-row">
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      1 hr 10 mins
+                    </div>
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                      </svg>
+                      3.8 km
+                    </div>
+                  </div>
+                </div>
+                <button class="book-btn" type="button">Book</button>
+              </div>
+
+              <div class="list-item">
+                <div class="list-item__content">
+                  <div class="list-item__title-row">
+                    <span class="list-item__title">District Hospital</span>
+                    <span class="badge badge--low">Low Crowd</span>
+                  </div>
+                  <div class="list-item__meta">Neyyattinkara</div>
+                  <div class="meta-row">
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      1 hr 25 mins
+                    </div>
+                    <div class="meta-pill">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                        <circle cx="12" cy="9" r="2.5"></circle>
+                      </svg>
+                      12.5 km
+                    </div>
+                  </div>
+                </div>
+                <button class="book-btn" type="button">Book</button>
+              </div>
+
+              <button class="link-btn" type="button">
+                View more hospitals
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="card card--doctor-status">
+              <div class="card__title-row">
+                <h3>Doctor Status</h3>
+                <div class="live-pill">
+                  <div class="live-dot"></div>
+                  Live
+                </div>
+              </div>
+
+              <div class="doctor-item">
+                <div class="doctor-avatar" style="
+                      background: linear-gradient(135deg, #0f766e, #16a34a);
+                    ">
+                  RK
+                </div>
+                <div class="list-item__content">
+                  <div class="doctor-item__title-row">
+                    <span class="doctor-item__name">Dr. Rajesh Kumar</span>
+                    <span class="badge badge--available">Available</span>
+                  </div>
+                  <div class="doctor-item__dept">General Medicine</div>
+                </div>
+              </div>
+
+              <div class="doctor-item">
+                <div class="doctor-avatar" style="
+                      background: linear-gradient(135deg, #7c3aed, #ec4899);
+                    ">
+                  AN
+                </div>
+                <div class="list-item__content">
+                  <div class="doctor-item__title-row">
+                    <span class="doctor-item__name">Dr. Anitha Nair</span>
+                    <span class="badge badge--break">On Break</span>
+                  </div>
+                  <div class="doctor-item__dept">Pediatrics</div>
+                  <div class="doctor-item__note">Back at 11:30 AM</div>
+                </div>
+              </div>
+
+              <div class="doctor-item">
+                <div class="doctor-avatar" style="
+                      background: linear-gradient(135deg, #2563eb, #0284c7);
+                    ">
+                  VD
+                </div>
+                <div class="list-item__content">
+                  <div class="doctor-item__title-row">
+                    <span class="doctor-item__name">Dr. Vivek Das</span>
+                    <span class="badge badge--ended">OP Ended</span>
+                  </div>
+                  <div class="doctor-item__dept">Orthopedics</div>
+                  <div class="doctor-item__note">Next OP: Tomorrow</div>
+                </div>
+              </div>
+
+              <div class="doctor-item">
+                <div class="doctor-avatar" style="
+                      background: linear-gradient(135deg, #dc2626, #f43f5e);
+                    ">
+                  SM
+                </div>
+                <div class="list-item__content">
+                  <div class="doctor-item__title-row">
+                    <span class="doctor-item__name">Dr. Sneha Menon</span>
+                    <span class="badge badge--available">Available</span>
+                  </div>
+                  <div class="doctor-item__dept">Dermatology</div>
+                </div>
+              </div>
+
+              <button class="link-btn" type="button">
+                View full schedule
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="stacked-card-column">
+              <div class="card card--stack">
+                <div class="small-card">
+                  <div class="small-card__icon" style="background: #f0fdf4; color: #16a34a">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="small-card__title">Medicine Availability</div>
+                    <div class="small-card__text" style="color: #16a34a; font-weight: 600">
+                      All medicines in stock
+                    </div>
+                    <div class="small-card__muted">for your prescription</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card--stack">
+                <div class="small-card">
+                  <div class="small-card__icon" style="background: #eff6ff; color: #2563eb">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3.5 21 12 3l8.5 18"></path>
+                      <path d="M8.5 21 12 13l3.5 8"></path>
+                      <line x1="2" y1="21" x2="22" y2="21"></line>
+                    </svg>
+                  </div>
+                  <div style="flex: 1">
+                    <div class="small-card__title">Upcoming Health Camps</div>
+                    <div class="small-card__text">
+                      Free General Health Checkup Camp
+                    </div>
+                    <div class="small-card__muted">
+                      Govt. Hospital, Kattakada
+                    </div>
+                  </div>
+                  <div class="small-card__date">
+                    <strong>25</strong><span>May</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card card--stack">
+                <div class="small-card">
+                  <div class="small-card__icon" style="background: #fff1f2; color: #dc2626">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                  </div>
+                  <div style="flex: 1">
+                    <div class="small-card__title">Blood Banks Near You</div>
+                    <div class="small-card__text">District Blood Bank</div>
+                    <div class="small-card__muted">Thiruvananthapuram</div>
+                  </div>
+                  <div class="small-card__blood">
+                    <strong>A+</strong><span>Available</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="assets/images/govt.png" alt="Govt of Kerala" />
+          <div>
+            <div class="footer__title">Government of Kerala</div>
+            <div class="footer__meta">
+              Health &amp; Family Welfare Department
+            </div>
+            <div class="footer__copy">
+              © 2025 QueueCare Kerala. All rights reserved.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__right">
+          <div class="footer__social">
+            <a class="social-link" href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg></a>
+            <a class="social-link" href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                </path>
+              </svg></a>
+            <a class="social-link" href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg></a>
+            <a class="social-link" href="#" aria-label="YouTube"><svg>
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z">
+                </path>
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"></polygon>
+              </svg></a>
+          </div>
+          <div class="footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

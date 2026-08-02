@@ -27,6 +27,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: var(--background);
   color: var(--text);
+  
 }
 
 a {
@@ -52,6 +53,7 @@ button {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+  user-select: none;
 }
 
 .navbar__inner {
@@ -172,6 +174,39 @@ button {
   border-color: #d1d5db;
 }
 
+.language-picker {
+  display: flex;
+  align-items: center;
+}
+
+.language-picker__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.375rem 0.75rem;
+  background: white;
+  color: #374151;
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.language-picker__select {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.language-picker__select option {
+  color: #111827;
+}
+
 .profile-chip {
   display: flex;
   align-items: center;
@@ -179,6 +214,7 @@ button {
   padding: 0.375rem 0.625rem;
   border-radius: 0.5rem;
   border: 1px solid var(--border);
+  cursor: pointer;
 }
 
 .profile-avatar {
@@ -203,13 +239,130 @@ button {
   padding: 0.25rem;
 }
 
+@media (max-width: 920px) {
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .navbar__actions {
+    display: none;
+  }
+}
+#profile_dropDown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: calc(70% + 0.5rem);
+  width: 260px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.25s ease;
+  z-index: 1000;
+}
+
+#profile_dropDown.active {
+  opacity: 1;
+  max-height: 400px;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.profileAvatar i{
+    font-size: 42px;
+    color: var(--primary);
+}
+
+.profileInfo h4{
+    margin: 0;
+    font-size: 16px;
+}
+
+.profileInfo p{
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+#profile_dropDown hr{
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+.dropDownItem{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .2s;
+}
+
+.dropDownItem:hover{
+    background: #f3f4f6;
+}
+
+.dropDownItem i{
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.logout{
+    color: #dc2626;
+}
+
+.logout i{
+    color: #dc2626;
+}
+
 .mobile-nav {
-  display: none;
+  display: flex;
   background: white;
   border-top: 1px solid var(--border);
   padding: 1rem 1.5rem;
   flex-direction: column;
   gap: 0.5rem;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.3s ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.mobile-nav.active {
+  max-height: 400px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .mobile-nav a {
@@ -575,10 +728,19 @@ main {
   border: 1px solid var(--border);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
   padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card--doctor-status {
+  display: flex;
+  flex-direction: column;
 }
 
 .card--stack {
   padding: 1.25rem;
+  flex: 1;
 }
 
 .card__title-row {
@@ -724,6 +886,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 0.375rem;
+  margin-top: auto;
 }
 
 .doctor-item {
@@ -732,6 +895,7 @@ main {
   gap: 0.75rem;
   padding: 0.875rem 0;
   border-bottom: 1px solid #f3f4f6;
+  min-height: 84px;
 }
 
 .doctor-avatar {
@@ -785,6 +949,12 @@ main {
   height: 7px;
   border-radius: 50%;
   background: #16a34a;
+}
+
+.stacked-card-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .small-card {
