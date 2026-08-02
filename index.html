@@ -23,10 +23,10 @@
           </a>
 
           <div class="desktop-nav">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="index.html">Home</a>
             <a class="nav-link" href="#">Book Appointment</a>
             <a class="nav-link" href="#">Live Queue</a>
-            <a class="nav-link" href="#">Hospitals</a>
+            <a class="nav-link" href="hospitals.html">Hospitals</a>
             <a class="nav-link" href="#">Health Camps</a>
             <a class="nav-link" href="#">Blood Bank</a>
             <a class="nav-link" href="#">Feedback</a>
@@ -115,10 +115,10 @@
       </div>
 
       <div class="mobile-nav">
-        <a href="#">Home</a>
+        <a href="index.html">Home</a>
         <a href="#">Book Appointment</a>
         <a href="#">Live Queue</a>
-        <a href="#">Hospitals</a>
+        <a href="hospitals.html">Hospitals</a>
         <a href="#">Health Camps</a>
         <a href="#">Blood Bank</a>
         <a href="#">Feedback</a>
@@ -322,104 +322,17 @@
               <p class="card__subtitle">
                 Based on queue length, distance &amp; travel time
               </p>
+              
+              <div id="hospital_display" class="hospital-display-area"></div>
 
-              <div class="list-item">
-                <div class="list-item__content">
-                  <div class="list-item__title-row">
-                    <span class="list-item__title">Medical College Hospital</span>
-                    <span class="badge badge--recommended">Recommended</span>
-                  </div>
-                  <div class="list-item__meta">Thiruvananthapuram</div>
-                  <div class="meta-row">
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      45 mins
-                    </div>
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                        <circle cx="12" cy="9" r="2.5"></circle>
-                      </svg>
-                      2.1 km
-                    </div>
-                  </div>
-                </div>
-                <button class="book-btn" type="button">Book</button>
-              </div>
-
-              <div class="list-item">
-                <div class="list-item__content">
-                  <div class="list-item__title-row">
-                    <span class="list-item__title">General Hospital</span>
-                    <span class="badge badge--moderate">Moderate Crowd</span>
-                  </div>
-                  <div class="list-item__meta">
-                    Pattom, Thiruvananthapuram
-                  </div>
-                  <div class="meta-row">
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      1 hr 10 mins
-                    </div>
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                        <circle cx="12" cy="9" r="2.5"></circle>
-                      </svg>
-                      3.8 km
-                    </div>
-                  </div>
-                </div>
-                <button class="book-btn" type="button">Book</button>
-              </div>
-
-              <div class="list-item">
-                <div class="list-item__content">
-                  <div class="list-item__title-row">
-                    <span class="list-item__title">District Hospital</span>
-                    <span class="badge badge--low">Low Crowd</span>
-                  </div>
-                  <div class="list-item__meta">Neyyattinkara</div>
-                  <div class="meta-row">
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
-                      1 hr 25 mins
-                    </div>
-                    <div class="meta-pill">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                        <circle cx="12" cy="9" r="2.5"></circle>
-                      </svg>
-                      12.5 km
-                    </div>
-                  </div>
-                </div>
-                <button class="book-btn" type="button">Book</button>
-              </div>
-
-              <button class="link-btn" type="button">
+              <a href="hospitals.html" class="link-btn-wrapper"><button class="link-btn" type="button">
                 View more hospitals
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
-              </button>
+              </button></a>
             </div>
 
             <div class="card card--doctor-status">
@@ -625,8 +538,6 @@
       </div>
     </footer>
   </div>
-
-  <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Desktop Login Page</title>
+    <meta
+      name="description"
+      content="Securely access healthcare services with a professional login portal designed for QCare Kerala, offering easy authentication and patient account management."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #f0fdf4;
+      }
+
+      body {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .page {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .panel-left {
+        position: relative;
+        width: 55%;
+        padding: 40px;
+        background: linear-gradient(145deg, #064e3b 0%, #059669 45%, #10b981 80%, #34d399 100%);
+        color: white;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .panel-left::before,
+      .panel-left::after,
+      .panel-left .decor-circle {
+        position: absolute;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .panel-left::before {
+        content: '';
+        top: -95px;
+        left: -95px;
+        width: 288px;
+        height: 288px;
+      }
+
+      .panel-left::after {
+        content: '';
+        top: -55px;
+        left: -55px;
+        width: 192px;
+        height: 192px;
+      }
+
+      .panel-left .decor-circle {
+        width: 384px;
+        height: 384px;
+        bottom: -128px;
+        right: -128px;
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .panel-left .decor-circle.small {
+        width: 256px;
+        height: 256px;
+        bottom: 0;
+        right: 0;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: grid;
+        place-items: center;
+      }
+
+      .brand-mark svg {
+        width: 20px;
+        height: 20px;
+        color: white;
+      }
+
+      .brand-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-title span {
+        font-weight: 300;
+        color: #d9f99d;
+      }
+
+      .illustration-wrap {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .illustration-wrap svg {
+        width: 100%;
+        max-width: 520px;
+        height: auto;
+      }
+
+      .hero-copy {
+        margin-top: 24px;
+        text-align: center;
+        max-width: 420px;
+      }
+
+      .hero-copy h2 {
+        margin: 0;
+        font-size: clamp(1.75rem, 2vw, 2.25rem);
+        font-weight: 800;
+        line-height: 1.05;
+      }
+
+      .hero-copy p {
+        margin: 1rem auto 0;
+        color: rgba(229, 231, 235, 0.95);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-width: 360px;
+      }
+
+      .stats-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat-card {
+        padding: 18px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .stat-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 14px;
+        background: rgba(167, 243, 208, 0.3);
+        display: grid;
+        place-items: center;
+        color: #d9f99d;
+        flex-shrink: 0;
+      }
+
+      .stat-label {
+        color: rgba(209, 250, 229, 0.95);
+        font-size: 0.8rem;
+        margin-top: 6px;
+      }
+
+      .stat-value {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .panel-right {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        background: linear-gradient(160deg, #f0fdf4 0%, #ffffff 60%, #ecfdf5 100%);
+        overflow: hidden;
+      }
+
+      .decor-blur {
+        position: absolute;
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .decor-blur.top {
+        width: 320px;
+        height: 320px;
+        top: -40px;
+        right: -40px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+      }
+
+      .decor-blur.bottom {
+        width: 256px;
+        height: 256px;
+        bottom: -24px;
+        left: -24px;
+        background: radial-gradient(circle, rgba(5, 150, 105, 0.05) 0%, transparent 70%);
+      }
+
+      .card {
+        width: 100%;
+        max-width: 440px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(24px);
+        border-radius: 24px;
+        border: 1px solid rgba(16, 185, 129, 0.15);
+        box-shadow: 0 8px 40px rgba(5, 150, 105, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04);
+        padding: 44px 44px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card .mobile-brand {
+        display: none;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 28px;
+      }
+
+      .mobile-brand .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 16px;
+        background: #059669;
+        color: white;
+      }
+
+      .card-header {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.03em;
+      }
+
+      .card-subtitle {
+        margin: 12px 0 28px;
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .tab-selector {
+        display: flex;
+        gap: 8px;
+        padding: 6px;
+        border-radius: 24px;
+        background: #f0fdf4;
+        border: 1px solid rgba(16, 185, 129, 0.12);
+        margin-bottom: 28px;
+      }
+
+      .tab-selector button {
+        flex: 1;
+        border: none;
+        border-radius: 18px;
+        padding: 12px 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease;
+        background: transparent;
+        color: #6b7280;
+      }
+
+      .tab-selector button.active {
+        background: #059669;
+        color: white;
+      }
+
+      .field-group {
+        display: grid;
+        gap: 20px;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #475569;
+        font-weight: 700;
+      }
+
+      .input-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-radius: 22px;
+        background: #f9fafb;
+        border: 1.5px solid rgba(16, 185, 129, 0.2);
+        padding: 9px 13px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .input-wrap.focused {
+        border-color: #059669;
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
+      }
+
+      .input-wrap .icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+      }
+
+      .input-wrap .country-code {
+        border-right: 1px solid rgba(16, 185, 129, 0.2);
+        padding-right: 10px;
+        color: #64748b;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .input-wrap input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 0.95rem;
+        color: #0f172a;
+        padding: 10px 0;
+      }
+
+      .input-wrap .toggle-button {
+        border: none;
+        background: transparent;
+        color: #64748b;
+        cursor: pointer;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .message-box {
+        border-radius: 20px;
+        background: #ecfdf5;
+        border: 1px solid #d1fae5;
+        color: #475569;
+        padding: 14px 16px;
+        font-size: 0.88rem;
+      }
+
+      .checkbox-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .checkbox-row label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .checkbox-button {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        border: 2px solid rgba(16, 185, 129, 0.4);
+        background: transparent;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .checkbox-button.checked {
+        border-color: #059669;
+        background: #059669;
+      }
+
+      .checkbox-button svg {
+        width: 10px;
+        height: 8px;
+        stroke: white;
+        stroke-width: 1.8;
+      }
+
+      .primary-button,
+      .secondary-button {
+        width: 100%;
+        border: none;
+        border-radius: 22px;
+        padding: 14px 18px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .primary-button {
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        color: white;
+        box-shadow: 0 4px 20px rgba(5, 150, 105, 0.35);
+      }
+
+      .primary-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 28px rgba(5, 150, 105, 0.5);
+      }
+
+      .secondary-button {
+        background: rgba(5, 150, 105, 0.04);
+        border: 1px solid rgba(5, 150, 105, 0.25);
+        color: #047857;
+      }
+
+      .secondary-button:hover {
+        background: rgba(5, 150, 105, 0.08);
+        border-color: rgba(5, 150, 105, 0.4);
+      }
+
+      .divider-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+      }
+
+      .divider-row::before,
+      .divider-row::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #e2e8f0;
+      }
+
+      .divider-row span {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .bottom-note {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(16, 185, 129, 0.1);
+        text-align: center;
+      }
+
+      .bottom-note p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.95rem;
+      }
+
+      .bottom-note button {
+        border: none;
+        background: transparent;
+        color: #059669;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .trust-row {
+        margin-top: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: #64748b;
+        font-size: 0.82rem;
+      }
+
+      .trust-row svg {
+        width: 14px;
+        height: 14px;
+        color: #16a34a;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 1024px) {
+        .panel-left {
+          display: none;
+        }
+
+        .panel-right {
+          padding: 24px;
+        }
+
+        .card {
+          padding: 32px 30px;
+        }
+
+        .mobile-brand {
+          display: flex;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          border-radius: 22px;
+          padding: 28px 22px;
+        }
+
+        .page {
+          flex-direction: column;
+        }
+
+        .panel-right {
+          min-height: 100vh;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <section class="panel-left">
+        <div class="brand-row">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.5 3.5C8.5 5.70914 6.70914 7.5 4.5 7.5C2.29086 7.5 0.5 5.70914 0.5 3.5C0.5 1.29086 2.29086 -0.5 4.5 -0.5C6.70914 -0.5 8.5 1.29086 8.5 3.5Z"
+                transform="translate(7 8)"
+                fill="currentColor"
+              />
+              <path d="M3 13V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M7 16H-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(8 4)" />
+            </svg>
+          </div>
+          <div>
+            <div class="brand-title">QCare <span>Kerala</span></div>
+          </div>
+        </div>
+
+        <div class="illustration-wrap">
+          <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="160" y="100" width="200" height="260" rx="8" fill="white" fill-opacity="0.12" />
+            <rect x="180" y="80" width="160" height="30" rx="4" fill="white" fill-opacity="0.18" />
+            <rect x="240" y="92" width="40" height="12" rx="3" fill="white" fill-opacity="0.9" />
+            <rect x="254" y="82" width="12" height="32" rx="3" fill="white" fill-opacity="0.9" />
+            <rect x="185" y="118" width="30" height="36" rx="4" fill="white" fill-opacity="0.32" />
+            <rect x="231" y="118" width="30" height="36" rx="4" fill="white" fill-opacity="0.22" />
+            <rect x="277" y="118" width="30" height="36" rx="4" fill="white" fill-opacity="0.28" />
+            <rect x="323" y="118" width="30" height="36" rx="4" fill="white" fill-opacity="0.18" />
+            <rect x="185" y="178" width="30" height="36" rx="4" fill="white" fill-opacity="0.22" />
+            <rect x="231" y="178" width="30" height="36" rx="4" fill="white" fill-opacity="0.16" />
+            <rect x="277" y="178" width="30" height="36" rx="4" fill="white" fill-opacity="0.24" />
+            <rect x="323" y="178" width="30" height="36" rx="4" fill="white" fill-opacity="0.18" />
+            <rect x="185" y="238" width="30" height="36" rx="4" fill="white" fill-opacity="0.2" />
+            <rect x="231" y="238" width="30" height="36" rx="4" fill="white" fill-opacity="0.3" />
+            <rect x="277" y="238" width="30" height="36" rx="4" fill="white" fill-opacity="0.16" />
+            <rect x="323" y="238" width="30" height="36" rx="4" fill="white" fill-opacity="0.22" />
+            <rect x="235" y="300" width="50" height="60" rx="4" fill="white" fill-opacity="0.25" />
+            <circle cx="278" cy="330" r="3" fill="white" fill-opacity="0.6" />
+            <g transform="translate(80, 200)">
+              <rect x="0" y="55" width="52" height="80" rx="8" fill="white" fill-opacity="0.9" />
+              <path d="M16 55 L26 75 L36 55" stroke="#059669" stroke-width="2" fill="none" stroke-opacity="0.6" />
+              <path d="M8 70 Q4 90 12 96 Q20 102 24 96" stroke="#059669" stroke-width="2.5" fill="none" stroke-linecap="round" />
+              <circle cx="24" cy="97" r="4" fill="#059669" fill-opacity="0.7" />
+              <ellipse cx="26" cy="38" rx="20" ry="22" fill="#FBBF74" />
+              <path d="M6 30 Q8 10 26 12 Q44 10 46 30" fill="#1a0a00" fill-opacity="0.8" />
+              <rect x="32" y="68" width="14" height="10" rx="2" fill="#059669" fill-opacity="0.4" />
+              <rect x="8" y="132" width="16" height="36" rx="4" fill="#374151" fill-opacity="0.8" />
+              <rect x="28" y="132" width="16" height="36" rx="4" fill="#374151" fill-opacity="0.8" />
+              <ellipse cx="16" cy="168" rx="10" ry="5" fill="#111827" fill-opacity="0.7" />
+              <ellipse cx="36" cy="168" rx="10" ry="5" fill="#111827" fill-opacity="0.7" />
+            </g>
+            <g transform="translate(380, 190)">
+              <rect x="0" y="55" width="52" height="80" rx="8" fill="white" fill-opacity="0.9" />
+              <path d="M16 55 L26 72 L36 55" stroke="#059669" stroke-width="2" fill="none" stroke-opacity="0.6" />
+              <rect x="36" y="72" width="22" height="28" rx="3" fill="#d1fae5" fill-opacity="0.9" />
+              <rect x="39" y="77" width="16" height="2" rx="1" fill="#059669" fill-opacity="0.5" />
+              <rect x="39" y="82" width="12" height="2" rx="1" fill="#059669" fill-opacity="0.5" />
+              <rect x="39" y="87" width="14" height="2" rx="1" fill="#059669" fill-opacity="0.5" />
+              <ellipse cx="26" cy="36" rx="20" ry="22" fill="#F9A86B" />
+              <path d="M6 28 Q6 6 26 8 Q46 6 46 28 Q46 16 36 14 Q26 8 16 14 Z" fill="#7C3AED" fill-opacity="0.85" />
+              <path d="M40 20 Q54 18 50 34" stroke="#7C3AED" stroke-width="8" stroke-linecap="round" fill="none" />
+              <rect x="8" y="132" width="16" height="36" rx="4" fill="#374151" fill-opacity="0.8" />
+              <rect x="28" y="132" width="16" height="36" rx="4" fill="#374151" fill-opacity="0.8" />
+              <ellipse cx="16" cy="168" rx="10" ry="5" fill="#111827" fill-opacity="0.7" />
+              <ellipse cx="36" cy="168" rx="10" ry="5" fill="#111827" fill-opacity="0.7" />
+            </g>
+            <g transform="translate(200, 280)">
+              <circle cx="20" cy="78" r="18" stroke="white" stroke-width="3" fill="none" stroke-opacity="0.6" />
+              <circle cx="20" cy="78" r="5" fill="white" fill-opacity="0.5" />
+              <circle cx="75" cy="85" r="12" stroke="white" stroke-width="3" fill="none" stroke-opacity="0.6" />
+              <circle cx="75" cy="85" r="4" fill="white" fill-opacity="0.5" />
+              <path d="M20 60 L20 30 L60 30 L65 60 L20 60 Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+              <path d="M20 30 L20 10" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+              <path d="M60 30 L60 10" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+              <path d="M20 30 L65 30" stroke="white" stroke-width="3" stroke-opacity="0.5" stroke-linecap="round" />
+              <rect x="28" y="0" width="30" height="32" rx="6" fill="#FDE68A" fill-opacity="0.85" />
+              <ellipse cx="43" cy="-10" rx="15" ry="16" fill="#F9A86B" />
+              <path d="M28 -14 Q30 -28 43 -26 Q56 -28 58 -14" fill="#92400E" fill-opacity="0.9" />
+              <path d="M20 32 Q42 28 65 38 L65 60 L20 60 Z" fill="#a7f3d0" fill-opacity="0.6" />
+              <path d="M60 10 L85 10" stroke="white" stroke-width="3" stroke-opacity="0.6" stroke-linecap="round" />
+            </g>
+            <g transform="translate(20, 120)">
+              <rect width="100" height="52" rx="10" fill="white" fill-opacity="0.18" />
+              <rect x="8" y="10" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.7" />
+              <text x="20" y="26" text-anchor="middle" fill="white" font-size="11" font-weight="700">+</text>
+              <rect x="40" y="14" width="50" height="6" rx="3" fill="white" fill-opacity="0.5" />
+              <rect x="40" y="26" width="36" height="4" rx="2" fill="white" fill-opacity="0.3" />
+            </g>
+            <g transform="translate(380, 130)">
+              <rect width="110" height="52" rx="10" fill="white" fill-opacity="0.18" />
+              <rect x="8" y="10" width="24" height="24" rx="6" fill="#34d399" fill-opacity="0.7" />
+              <circle cx="20" cy="22" r="6" fill="white" fill-opacity="0.8" />
+              <rect x="40" y="14" width="58" height="6" rx="3" fill="white" fill-opacity="0.5" />
+              <rect x="40" y="26" width="42" height="4" rx="2" fill="white" fill-opacity="0.3" />
+            </g>
+            <g opacity="0.35">
+              <circle cx="70" cy="340" r="18" stroke="white" stroke-width="1.5" fill="none" />
+              <path d="M62 340 h16 M70 332 v16" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </g>
+            <g opacity="0.3">
+              <circle cx="450" cy="310" r="14" stroke="white" stroke-width="1.5" fill="none" />
+              <path d="M444 310 Q446 304 450 304 Q454 304 456 310 Q458 316 450 320 Q442 316 444 310 Z" fill="white" />
+            </g>
+          </svg>
+
+          <div class="hero-copy">
+            <h2>Kerala's Trusted Healthcare Platform</h2>
+            <p>Connecting patients with the finest doctors and hospitals across God's Own Country.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 21C12 21 4 14.5 4 9.5C4 6.42 6.42 4 9.5 4C11.24 4 12.91 4.9 13.75 6.35C14.59 4.9 16.26 4 18 4C21.08 4 23.5 6.42 23.5 9.5C23.5 14.5 16 21 16 21H12Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="stat-value">2.4L+</p>
+              <p class="stat-label">Patients Served</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M18 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M6 6H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M6 6C6 12 12 20 12 20C12 20 18 12 18 6" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <div>
+              <p class="stat-value">1,200+</p>
+              <p class="stat-label">Doctors</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L4 7V13C4 18 7 21 12 22C17 21 20 18 20 13V7L12 2Z" stroke="currentColor" stroke-width="2" fill="none" />
+                <path d="M9.5 12.5L11.5 14.5L15.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <p class="stat-value">98%</p>
+              <p class="stat-label">Satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-right">
+        <div class="decor-blur top"></div>
+        <div class="decor-blur bottom"></div>
+
+        <div class="card">
+          <div class="mobile-brand">
+            <div class="brand-mark">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.5 3.5C8.5 5.70914 6.70914 7.5 4.5 7.5C2.29086 7.5 0.5 5.70914 0.5 3.5C0.5 1.29086 2.29086 -0.5 4.5 -0.5C6.70914 -0.5 8.5 1.29086 8.5 3.5Z"
+                  transform="translate(7 8)"
+                  fill="currentColor"
+                />
+                <path d="M3 13V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M7 16H-1" stroke="currentColor" stroke-width="2" stroke-linecap="round" transform="translate(8 4)" />
+              </svg>
+            </div>
+            <div class="brand-title">QCare Kerala</div>
+          </div>
+
+          <div class="desktop-brand" style="display:none;"></div>
+
+          <h1 class="card-header">Welcome back</h1>
+          <p class="card-subtitle">Sign in to continue to your health dashboard</p>
+
+          <div class="tab-selector" role="tablist">
+            <button type="button" class="tab-button active" data-tab="password">Password</button>
+            <button type="button" class="tab-button" data-tab="otp">OTP Login</button>
+          </div>
+
+          <form class="field-group" id="loginForm" novalidate>
+            <div class="field">
+              <label for="mobileInput">Mobile Number</label>
+              <div class="input-wrap" id="mobileWrap">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72 12.44 12.44 0 0 0 .7 2.81 2 2 0 0 1-.45 2L8.09 9.91a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2-.45 12.44 12.44 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </span>
+                <span class="country-code">+91</span>
+                <input id="mobileInput" type="tel" maxlength="10" placeholder="98765 43210" />
+              </div>
+            </div>
+
+            <div class="field" id="passwordField">
+              <label for="passwordInput">Password</label>
+              <div class="input-wrap" id="passwordWrap">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                </span>
+                <input id="passwordInput" type="password" placeholder="Enter your password" />
+                <button type="button" class="toggle-button" id="passwordToggle" aria-label="Show password">
+                  <svg id="eyeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="message-box hidden" id="otpHint">
+              We'll send a 6-digit OTP to your registered mobile number.
+            </div>
+
+            <div class="checkbox-row" id="rememberRow">
+              <label>
+                <button type="button" class="checkbox-button" id="rememberButton" aria-pressed="false">
+                  <svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="checkmark hidden">
+                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                Remember me
+              </label>
+              <button type="button" class="link-button">Forgot password?</button>
+            </div>
+
+            <button type="button" class="primary-button" id="primaryButton">
+              Sign In
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14" />
+                <path d="M13 6l6 6-6 6" />
+              </svg>
+            </button>
+
+            <div class="divider-row"><span>or</span></div>
+
+            <button type="button" class="secondary-button" id="otpButton">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 3 4.18 2 2 0 0 1 5 2h2.09a2 2 0 0 1 2 1.72 12.44 12.44 0 0 0 .7 2.81 2 2 0 0 1-.45 2L8.09 9.91a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2-.45 12.44 12.44 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              Continue with OTP
+            </button>
+          </form>
+
+          <div class="bottom-note">
+            <p>
+              Don't have an account?
+              <button type="button">Create Account</button>
+            </p>
+          </div>
+
+          <div class="trust-row">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 6V11C4 16 7 19 12 20C17 19 20 16 20 11V6L12 2Z" stroke="currentColor" stroke-width="2" fill="none" />
+              <path d="M9.5 12.5L11.5 14.5L15.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>Secured by 256-bit SSL encryption</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const passwordField = document.getElementById('passwordField');
+      const otpHint = document.getElementById('otpHint');
+      const rememberRow = document.getElementById('rememberRow');
+      const primaryButton = document.getElementById('primaryButton');
+      const otpButton = document.getElementById('otpButton');
+      const passwordToggle = document.getElementById('passwordToggle');
+      const passwordInput = document.getElementById('passwordInput');
+      const rememberButton = document.getElementById('rememberButton');
+      const rememberCheck = rememberButton.querySelector('.checkmark');
+      const mobileWrap = document.getElementById('mobileWrap');
+      const passwordWrap = document.getElementById('passwordWrap');
+      let activeTab = 'password';
+      let showPassword = false;
+      let rememberMe = false;
+
+      function updateFormState() {
+        tabButtons.forEach((button) => {
+          button.classList.toggle('active', button.dataset.tab === activeTab);
+        });
+
+        const showPasswordField = activeTab === 'password';
+        passwordField.classList.toggle('hidden', !showPasswordField);
+        rememberRow.classList.toggle('hidden', !showPasswordField);
+        otpHint.classList.toggle('hidden', showPasswordField);
+        otpButton.classList.toggle('hidden', activeTab !== 'password');
+
+        primaryButton.textContent = activeTab === 'otp' ? 'Send OTP' : 'Sign In';
+        const arrowSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        arrowSvg.setAttribute('viewBox', '0 0 24 24');
+        arrowSvg.setAttribute('width', '16');
+        arrowSvg.setAttribute('height', '16');
+        arrowSvg.setAttribute('fill', 'none');
+        arrowSvg.setAttribute('stroke', 'currentColor');
+        arrowSvg.setAttribute('stroke-width', '2');
+        arrowSvg.setAttribute('stroke-linecap', 'round');
+        arrowSvg.setAttribute('stroke-linejoin', 'round');
+        arrowSvg.innerHTML = '<path d="M5 12h14" /><path d="M13 6l6 6-6 6" />';
+        primaryButton.appendChild(arrowSvg);
+      }
+
+      tabButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeTab = button.dataset.tab;
+          updateFormState();
+        });
+      });
+
+      passwordToggle.addEventListener('click', () => {
+        showPassword = !showPassword;
+        passwordInput.type = showPassword ? 'text' : 'password';
+        const eyeIcon = passwordToggle.querySelector('#eyeIcon');
+        if (eyeIcon) {
+          eyeIcon.innerHTML = showPassword
+            ? '<path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" /><path d="M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />'
+            : '<path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" /><circle cx="12" cy="12" r="3" />';
+          passwordToggle.setAttribute('aria-label', showPassword ? 'Hide password' : 'Show password');
+        }
+      });
+
+      rememberButton.addEventListener('click', () => {
+        rememberMe = !rememberMe;
+        rememberButton.classList.toggle('checked', rememberMe);
+        rememberButton.setAttribute('aria-pressed', rememberMe.toString());
+        if (rememberMe) {
+          rememberCheck.classList.remove('hidden');
+        } else {
+          rememberCheck.classList.add('hidden');
+        }
+      });
+
+      const inputPairs = [
+        { wrap: mobileWrap, input: document.getElementById('mobileInput') },
+        { wrap: passwordWrap, input: passwordInput },
+      ];
+
+      inputPairs.forEach(({ wrap, input }) => {
+        input.addEventListener('focus', () => wrap.classList.add('focused'));
+        input.addEventListener('blur', () => wrap.classList.remove('focused'));
+      });
+
+      updateFormState();
+    </script>
+  </body>
+</html>
+  
