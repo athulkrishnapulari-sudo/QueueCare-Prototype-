@@ -10,17 +10,21 @@ window.onload = () => {
   updateProfileIcon();
   profile_name1.innerHTML = localStorage.getItem("Name");
   profile_name2.innerHTML = localStorage.getItem("Name");
+  if(localStorage.getItem('OP')!=[]){
+    updateOP();
+  }
   UpdateHospitals();
   scriptURL =
     "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
   const phone = localStorage.getItem("Phone");
-  fetch(`${scriptURL}?phone=${phone}`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-       localStorage.setItem("OP", JSON.stringify(data.appointments));
-    });
-    updateOP()
+  setInterval(() => {
+    fetch(`${scriptURL}?phone=${phone}`)
+      .then(res => res.json())
+      .then(data => {
+          localStorage.setItem("OP", JSON.stringify(data.appointments));
+          updateOP();
+      });
+}, 5000);
 };
 
 // ====================================================
@@ -277,7 +281,7 @@ function updateOP(){
   const appointments = JSON.parse(localStorage.getItem("OP")) || [];
 
 const lastAppointment = appointments[appointments.length - 1];
-  document.getElementById('token-card__number').innerHTML=lastAppointment.Token + " OP"
+  document.getElementById('token-card__number').innerHTML="OP "+lastAppointment.Token
   document.getElementById('dept').innerHTML=lastAppointment.Department;
   document.getElementById('hospital').innerHTML=lastAppointment.Hospital;
 }

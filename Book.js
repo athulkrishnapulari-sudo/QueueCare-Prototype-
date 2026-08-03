@@ -109,11 +109,11 @@ ContinueBtn.addEventListener("click", () => {
     overlay.style.display = "none";
     const family = localStorage.getItem("FamilyDetails");
     const family_data = JSON.parse(family);
+    data.Phone = family_data[0].Phone
     family_data.forEach((element, index) => {
         if (String(index + 1) == selected.value) {
             const name = `${element.FirstName} ${element.LastName}`;
             data.Name = name;
-            data.Phone = element.Phone;
             data.Gender = element.Gender;
             data.Age = calculateAge(element.DOB);
         }
