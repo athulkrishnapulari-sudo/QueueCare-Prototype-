@@ -7,6 +7,70 @@
     <title>QueueCare Kerala</title>
     <link rel="stylesheet" href="main.css" />
     <script defer src="script.js"></script>
+    <style>
+        @media (max-width: 900px) {
+
+            .desktop-nav,
+            .navbar__actions .btn-ghost {
+                display: none;
+            }
+
+            .navbar__actions {
+                display: flex;
+            }
+
+            .profile-chip {
+                display: flex;
+                position: absolute;
+                right: 2px;
+                border: none;
+            }
+
+            #profile_name1 {
+                display: none;
+            }
+
+            #profile_title {
+                display: none;
+            }
+
+            .profile-chip svg {
+                display: none;
+            }
+
+            .language-picker {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 60px;
+            }
+
+            #profile_dropDown {
+                left: unset;
+                right: 1%;
+            }
+
+            .mobile-nav.is-open {
+                display: flex;
+            }
+
+            .hero__grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .token-card {
+                transform: none;
+            }
+
+            .quick-actions__grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -56,7 +120,7 @@
                                 <div id="profile_name1" style="font-size: 0.75rem; font-weight: 600; color: #1f2937">
                                     Full Name
                                 </div>
-                                <div style="font-size: 0.6rem; color: #9ca3af">
+                                <div id="profile_title" style="font-size: 0.6rem; color: #9ca3af">
                                     Good morning!
                                 </div>
                             </div>
@@ -250,8 +314,11 @@
 
             profile_name1.innerHTML = localStorage.getItem("Name");
             profile_name2.innerHTML = localStorage.getItem("Name");
+            updateProfileIcon();
             UpdateHospitals();
         };
+        const profile_avatar =
+            document.getElementsByClassName("profile-avatar")[0];
         const profile_name1 = document.getElementById("profile_name1");
         const profile_name2 = document.getElementById("profile_name2");
 
@@ -261,7 +328,19 @@
             document.getElementsByClassName("menu-toggle")[0];
         const profile_dropDown = document.getElementById("profile_dropDown");
         const nav_menu = document.getElementsByClassName("mobile-nav")[0];
-
+        function updateProfileIcon() {
+            const family = localStorage.getItem("FamilyDetails");
+            const family_data = JSON.parse(family);
+            const FirstName = family_data[0].FirstName;
+            const LastName = family_data[0].LastName;
+            console.log(family_data);
+            console.log("First Name : ", FirstName);
+            console.log("Last Name : ", LastName);
+            const profile_icon = FirstName[0] + LastName[0];
+            console.log(profile_icon);
+            profile_avatar.innerHTML = "";
+            profile_avatar.innerHTML = profile_icon;
+        }
         window.addEventListener("click", () => {
             //window control
             profile_dropDown.classList.remove("active");

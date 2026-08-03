@@ -6,8 +6,9 @@ window.onload = () => {
         window.location.replace("index.html");
         return;
     }
-
+    
     console.log("Page loaded");
+    updateProfileIcon();
     profile_name1.innerHTML=localStorage.getItem('Name')
     profile_name2.innerHTML=localStorage.getItem('Name')
     UpdateHospitals();
@@ -50,6 +51,7 @@ const nav_menu = document.getElementsByClassName("mobile-nav")[0];
 const hospital_display = document.getElementById("hospital_display");
 const profile_name1 = document.getElementById('profile_name1');
 const profile_name2 = document.getElementById('profile_name2');
+const profile_avatar = document.getElementsByClassName('profile-avatar')[0];
 
 // =====================================================
 
@@ -239,7 +241,19 @@ function UpdateHospitals() {
               </div>`;
   });
 }
-
+function updateProfileIcon(){
+  const family = localStorage.getItem('FamilyDetails')
+  const family_data = JSON.parse(family)
+  const FirstName = family_data[0].FirstName;
+  const LastName = family_data[0].LastName;
+  console.log(family_data)
+  console.log("First Name : ",FirstName)
+  console.log("Last Name : ",LastName)
+  const profile_icon = FirstName[0]+LastName[0];
+  console.log(profile_icon)
+  profile_avatar.innerHTML=""
+  profile_avatar.innerHTML=profile_icon;
+}
 // =====================================================
 
 // =====================================================
@@ -280,6 +294,7 @@ async function main() {
   showLoadingHospitals();
 
   try {
+    
     const location = await getLocation();
     Hospitals = await getNearbyHospitals(location[0], location[1]);
     UpdateHospitals();

@@ -203,7 +203,7 @@ SubmitButton.addEventListener("click", (e) => {
       }
     }
   }
-
+  
   for (let j = 1; j <= i; j++) {
     const obj = {
       Relationship: document.getElementById(`Relationship${j}`).value,
