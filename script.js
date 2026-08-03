@@ -1,18 +1,26 @@
 window.onload = () => {
+  const loggedIn = localStorage.getItem("loggedIn");
 
-    const loggedIn = localStorage.getItem("loggedIn");
+  if (loggedIn !== "true") {
+    window.location.replace("index.html");
+    return;
+  }
 
-    if (loggedIn !== "true") {
-        window.location.replace("index.html");
-        return;
-    }
-    
-    console.log("Page loaded");
-    updateProfileIcon();
-    profile_name1.innerHTML=localStorage.getItem('Name')
-    profile_name2.innerHTML=localStorage.getItem('Name')
-    UpdateHospitals();
-
+  console.log("Page loaded");
+  updateProfileIcon();
+  profile_name1.innerHTML = localStorage.getItem("Name");
+  profile_name2.innerHTML = localStorage.getItem("Name");
+  UpdateHospitals();
+  scriptURL =
+    "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
+  const phone = localStorage.getItem("Phone");
+  fetch(`${scriptURL}?phone=${phone}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+       localStorage.setItem("OP", JSON.stringify(data.appointments));
+    });
+    updateOP()
 };
 
 // ====================================================
@@ -31,9 +39,9 @@ const speed = 25; //for calculating time
 
 const profile_drop_btn = document.getElementById("profile_drop_btn");
 const navMenu_toggle_button = document.getElementsByClassName("menu-toggle")[0];
-const logout = document.getElementsByClassName('logout')[0];
-const BookOp1 = document.getElementById('BookOp1');
-const BookOp2 = document.getElementById('BookOp2');
+const logout = document.getElementsByClassName("logout")[0];
+const BookOp1 = document.getElementById("BookOp1");
+const BookOp2 = document.getElementById("BookOp2");
 
 // =====================================================
 
@@ -51,10 +59,10 @@ const nav_menu = document.getElementsByClassName("mobile-nav")[0];
 // =====================================================
 
 const hospital_display = document.getElementById("hospital_display");
-const profile_name1 = document.getElementById('profile_name1');
-const profile_name2 = document.getElementById('profile_name2');
-const profile_avatar = document.getElementsByClassName('profile-avatar')[0];
-const members = document.getElementById('members');
+const profile_name1 = document.getElementById("profile_name1");
+const profile_name2 = document.getElementById("profile_name2");
+const profile_avatar = document.getElementsByClassName("profile-avatar")[0];
+const members = document.getElementById("members");
 
 // =====================================================
 
@@ -133,22 +141,20 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   );
 }
 function filterGovernmentHospitals(hospitals) {
-    const keywords = [
-        "govt",
-        "government",
-        "thaluk",
-        "taluk",
-        "district",
-        "general"
-    ];
+  const keywords = [
+    "govt",
+    "government",
+    "thaluk",
+    "taluk",
+    "district",
+    "general",
+  ];
 
-    return hospitals.filter(hospital => {
-        const name = hospital.name.toLowerCase();
+  return hospitals.filter((hospital) => {
+    const name = hospital.name.toLowerCase();
 
-        return keywords.some(keyword => 
-            name.includes(keyword)
-        );
-    });
+    return keywords.some((keyword) => name.includes(keyword));
+  });
 }
 async function getNearbyHospitals(lat, lon) {
   console.log("Searching hospitals near:", lat, lon);
@@ -184,7 +190,10 @@ async function getNearbyHospitals(lat, lon) {
     Hospitals.sort((a, b) => a.distance - b.distance);
     const governmentHospitals = filterGovernmentHospitals(Hospitals);
     console.log("Sorted Hospitals:", governmentHospitals);
-    localStorage.setItem("HospitalsSorted", JSON.stringify(governmentHospitals));
+    localStorage.setItem(
+      "HospitalsSorted",
+      JSON.stringify(governmentHospitals),
+    );
     return governmentHospitals;
   } catch (error) {
     console.log("API Error:", error);
@@ -212,7 +221,7 @@ function UpdateHospitals() {
     return;
   }
 
-  hospital_display.innerHTML="";
+  hospital_display.innerHTML = "";
   const firstThree = Hospitals.slice(0, 3);
   firstThree.map((item) => {
     hospital_display.innerHTML += `<div class="list-item">
@@ -244,27 +253,34 @@ function UpdateHospitals() {
               </div>`;
   });
 }
-function updateProfileIcon(){
-  const family = localStorage.getItem('FamilyDetails')
-  const family_data = JSON.parse(family)
+function updateProfileIcon() {
+  const family = localStorage.getItem("FamilyDetails");
+  const family_data = JSON.parse(family);
   const FirstName = family_data[0].FirstName;
   const LastName = family_data[0].LastName;
-  console.log(family_data)
-  console.log("First Name : ",FirstName)
-  console.log("Last Name : ",LastName)
-  const profile_icon = FirstName[0]+LastName[0];
-  console.log(profile_icon)
-  profile_avatar.innerHTML=""
-  profile_avatar.innerHTML=profile_icon;
+  console.log(family_data);
+  console.log("First Name : ", FirstName);
+  console.log("Last Name : ", LastName);
+  const profile_icon = FirstName[0] + LastName[0];
+  console.log(profile_icon);
+  profile_avatar.innerHTML = "";
+  profile_avatar.innerHTML = profile_icon;
 }
 
+BookOp1.addEventListener("click", () => {
+  window.location.href = "Book.html";
+});
+BookOp2.addEventListener("click", () => {
+  window.location.href = "Book.html";
+});
+function updateOP(){
+  const appointments = JSON.parse(localStorage.getItem("OP")) || [];
 
-BookOp1.addEventListener('click', () => {
-            window.location.href="Book.html"
-})
-BookOp2.addEventListener('click', () => {
-            window.location.href="Book.html"
-})
+const lastAppointment = appointments[appointments.length - 1];
+  document.getElementById('token-card__number').innerHTML=lastAppointment.Token + " OP"
+  document.getElementById('dept').innerHTML=lastAppointment.Department;
+  document.getElementById('hospital').innerHTML=lastAppointment.Hospital;
+}
 // =====================================================
 
 // =====================================================
@@ -305,7 +321,6 @@ async function main() {
   showLoadingHospitals();
 
   try {
-    
     const location = await getLocation();
     Hospitals = await getNearbyHospitals(location[0], location[1]);
     UpdateHospitals();
@@ -317,21 +332,16 @@ async function main() {
 
 main();
 
-
-
-
 // =====================================================
 
-
-
 // =====================================================
-//                          LOGOUT 
+//                          LOGOUT
 // =====================================================
 
-logout.addEventListener('click',()=>{
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("Phone");
-    localStorage.removeItem("Name");
-    localStorage.removeItem("FamilyDetails");
-    window.location.replace("index.html");
-})
+logout.addEventListener("click", () => {
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("Phone");
+  localStorage.removeItem("Name");
+  localStorage.removeItem("FamilyDetails");
+  window.location.replace("index.html");
+});

@@ -1,39 +1,60 @@
-const scriptURL =
-  "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
+scriptURL =
+    "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
 
 window.onload = () => {
-  console.log("Page Loaded");
-  overlay.style.display = "flex";
-  membersSelectAreaUpdate();
+    console.log("Page Loaded");
+    overlay.style.display = "flex";
+    membersSelectAreaUpdate();
+    const phone = localStorage.getItem("Phone");
+    fetch(`${scriptURL}?phone=${phone}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.setItem("OP", JSON.stringify(data.appointments));
+        });
 };
+const profile_avatar = document.getElementsByClassName("profile-avatar")[0];
+function updateProfileIcon() {
+  const family = localStorage.getItem("FamilyDetails");
+  const family_data = JSON.parse(family);
+  const FirstName = family_data[0].FirstName;
+  const LastName = family_data[0].LastName;
+  console.log(family_data);
+  console.log("First Name : ", FirstName);
+  console.log("Last Name : ", LastName);
+  const profile_icon = FirstName[0] + LastName[0];
+  console.log(profile_icon);
+  profile_avatar.innerHTML = "";
+  profile_avatar.innerHTML = profile_icon;
+}
 const profile_drop_btn1 = document.getElementById("profile_drop_btn");
 const nav_menu = document.getElementsByClassName("mobile-nav")[0];
 const navMenu_toggle_button1 =
-  document.getElementsByClassName("menu-toggle")[0];
+    document.getElementsByClassName("menu-toggle")[0];
 window.addEventListener("click", () => {
-  //window control
-  profile_dropDown.classList.remove("active");
-  nav_menu.classList.remove("active");
+    //window control
+    profile_dropDown.classList.remove("active");
+    nav_menu.classList.remove("active");
 });
 
 profile_drop_btn1.addEventListener("click", (event) => {
-  event.stopPropagation();
-  profile_dropDown.classList.toggle("active");
+    event.stopPropagation();
+    profile_dropDown.classList.toggle("active");
 });
 
 navMenu_toggle_button1.addEventListener("click", (event) => {
-  event.stopPropagation();
-  nav_menu.classList.toggle("active");
+    event.stopPropagation();
+    nav_menu.classList.toggle("active");
 });
 const overlay = document.getElementById("overlay");
 
 function membersSelectAreaUpdate() {
-  const family = localStorage.getItem("FamilyDetails");
-  const family_data = JSON.parse(family);
-  family_data.forEach((element, index) => {
-    const name = `${element.FirstName} ${element.LastName}`;
-    console.log(name);
-    members.innerHTML += `
+    const family = localStorage.getItem("FamilyDetails");
+    const family_data = JSON.parse(family);
+    family_data.forEach((element, index) => {
+        const name = `${element.FirstName} ${element.LastName}`;
+        console.log(name);
+        members.innerHTML += `
       <label class="memberTile">
                 <input type="radio" name="patient" value="${index + 1}">
 
@@ -43,9 +64,9 @@ function membersSelectAreaUpdate() {
                 </div>
         </label>
     `;
-  });
+    });
 
-  members.innerHTML += `<label class="memberTile other">
+    members.innerHTML += `<label class="memberTile other">
             <input type="radio" name="patient" value="other">
 
             <div class="memberInfo">
@@ -56,21 +77,21 @@ function membersSelectAreaUpdate() {
 }
 
 function calculateAge(dob) {
-  const birthDate = new Date(dob);
-  const today = new Date();
+    const birthDate = new Date(dob);
+    const today = new Date();
 
-  let age = today.getFullYear() - birthDate.getFullYear();
+    let age = today.getFullYear() - birthDate.getFullYear();
 
-  const monthDiff = today.getMonth() - birthDate.getMonth();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
 
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
+    if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
 
-  return age;
+    return age;
 }
 
 const data = {};
@@ -78,26 +99,26 @@ const data = {};
 const ContinueBtn = document.getElementById("continueBtn");
 
 ContinueBtn.addEventListener("click", () => {
-  const selected = document.querySelector('input[name="patient"]:checked');
+    const selected = document.querySelector('input[name="patient"]:checked');
 
-  if (!selected) {
-    alert("Please select a patient");
-    return;
-  }
-  console.log(selected.value);
-  overlay.style.display = "none";
-  const family = localStorage.getItem("FamilyDetails");
-  const family_data = JSON.parse(family);
-  family_data.forEach((element, index) => {
-    if (String(index + 1) == selected.value) {
-      const name = `${element.FirstName} ${element.LastName}`;
-      data.Name = name;
-      data.Phone = element.Phone;
-      data.Gender = element.Gender;
-      data.Age = calculateAge(element.DOB);
+    if (!selected) {
+        alert("Please select a patient");
+        return;
     }
-  });
-  console.log(data);
+    console.log(selected.value);
+    overlay.style.display = "none";
+    const family = localStorage.getItem("FamilyDetails");
+    const family_data = JSON.parse(family);
+    family_data.forEach((element, index) => {
+        if (String(index + 1) == selected.value) {
+            const name = `${element.FirstName} ${element.LastName}`;
+            data.Name = name;
+            data.Phone = element.Phone;
+            data.Gender = element.Gender;
+            data.Age = calculateAge(element.DOB);
+        }
+    });
+    console.log(data);
 });
 let token;
 
@@ -130,43 +151,44 @@ form.addEventListener("submit", (e) => {
         },
         body: JSON.stringify(data),
     })
-    .then(response => response.text())
-    .then(result => {
+        .then(response => response.text())
+        .then(result => {
 
-        const responseData = JSON.parse(result);
+            const responseData = JSON.parse(result);
 
-        console.log(responseData);
+            console.log(responseData);
 
-        if (responseData.status === "success") {
+            if (responseData.status === "success") {
 
-            token = responseData.token;
+                token = responseData.token;
 
-            
 
-            generateOPTicket(data,token);
-        }
 
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("Something went wrong. Please try again.");
-    });
+                generateOPTicket(data, token)
+                    .then(() => {
+                        window.location.href = "main.html";
+                    });
+            }
+
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
+        });
+
+
 
 });
 
 
 
-
-function generateOPTicket(data,token) {
-
-    const container=`<!DOCTYPE html>
-<html lang="en">
+function generateOPTicket(data, token) {
+    console.log("Generating PDF started");
+    const html = `<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @page {
+<style>
+@page {
     size: A4;
     margin: 20mm;
 }
@@ -176,160 +198,160 @@ body {
     height: 257mm;
     margin: auto;
     font-family: Arial, sans-serif;
-    border: 1px solid black;
+    border:1px solid black;
 }
 
 #row1{
     height:10%;
     border:1px solid black;
-    
     margin:0.2mm 5mm;
-    margin-top: 5mm;
+    margin-top:5mm;
 }
+
 #row1 h3{
-    font-size: 3.2mm;
-    text-align: center;
+    font-size:3.2mm;
+    text-align:center;
 }
-#row1 .row1{
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-}
-#row1 span{
-    font-size: 2.5mm;
-    margin-top: 4.3mm;
-    margin-left: 2mm;
-}
-#row1 .row1 h3{
-    font-size: 3.4mm;
-    position: absolute;
-    left: 40%;
-    right:40%;
-}
+
 .row1{
-    display: flex;
+    display:flex;
+    position:relative;
 }
+
+#row1 span{
+    font-size:2.5mm;
+    margin-top:4.3mm;
+    margin-left:2mm;
+}
+
 #row2{
     border:1px solid black;
     margin:0.7mm 5mm;
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
     padding:2mm 0;
 }
 
-
-.row2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    
+.row2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
 }
 
-.row2:last-child {
-    border-bottom: none;
-}
-
-.row2 span {
-    padding: 2px 12px;
-    font-size: 12px;
+.row2 span{
+    padding:2px 12px;
+    font-size:12px;
 }
 
 
-
-.row2 b {
-    font-weight: 600;
-}
-
-#row3 {
-    min-height: 180mm !important;
-    width:170;
+#row3{
+    height:180mm;
+    width:180mm;
     border:1px solid black;
     margin:0.7mm 5mm;
 }
 
-.row3 {
+.row3{
     display:flex;
-    width:170mm:
+    width:100%;
     height:100%;
-    flex-direction:row;
-    font-size:14px;
 }
 
-.column1 {
+.column1{
     width:31.9mm;
     height:100%;
     border-right:1px solid black;
-
 }
 
-.column2 {
+.column2{
     width:127.6mm;
     height:100%;
-    border:none;
-
 }
+
 #row4{
-    font-size: 12px;
+    font-size:12px;
 }
-    </style>
+
+</style>
 </head>
+
 <body>
-    <div id="row1">
-        <h3>Department of Health & Family Welfare</h3>
-        <h3>${data.Hospital}</h3>
-        <div class="row1">
-            <span>CR No : 213456788909989</span>
-            <h3>OPD CARD</h3>
-        </div>
-    </div>
-    <div id="row2">
-        <div class="row2"><span>Patient Name : ${data.Name}</span><span>Age : ${data.Age} Yr</span></div>
-        <div class="row2"><span>Sex : ${data.Gender}</span><span>Mobile Number : ${data.Phone}</span></div>
-        <div class="row2"><span>Department : ${data.Department}</span><span>Appointement Date : ${data.Date}</span></div>
-        <div class="row2"><span>Appointement Time : ${data.Time}</span><span>Token No : ${token}</span></div>
-    </div>
-    <div id="row3">
-        <div class="row3">
-            <div class="column1"></div>
-            <div class="column2"></div>
-        </div>
-    </div>
-    <div id="row4">
-        <ul>
-            <li>This OPD Ticket is generated through online</li>
-            <li>Not Valid for casualty</li>
-            <li>Something</li>
-        </ul>
-    </div>
+
+<div id="row1">
+<h3>Department of Health & Family Welfare</h3>
+<h3>${data.Hospital}</h3>
+
+<div class="row1">
+<span>CR No : 213456788909989</span>
+<h3>OPD CARD</h3>
+</div>
+
+</div>
+
+
+<div id="row2">
+
+<div class="row2">
+<span>Patient Name : ${data.Name}</span>
+<span>Age : ${data.Age} Yr</span>
+</div>
+
+<div class="row2">
+<span>Sex : ${data.Gender}</span>
+<span>Mobile Number : ${data.Phone}</span>
+</div>
+
+<div class="row2">
+<span>Department : ${data.Department}</span>
+<span>Appointment Date : ${data.Date}</span>
+</div>
+
+<div class="row2">
+<span>Appointment Time : ${data.Time}</span>
+<span>Token No : ${token}</span>
+</div>
+
+</div>
+
+
+<div id="row3">
+<div class="row3">
+<div class="column1"></div>
+<div class="column2"></div>
+</div>
+</div>
+
+
+<div id="row4">
+<ul>
+<li>This OPD Ticket is generated through online</li>
+<li>Not Valid for casualty</li>
+<li>Something</li>
+</ul>
+</div>
+
+
 </body>
-</html>`
+</html>`;
 
-    setTimeout(() => {
 
-        html2pdf()
-            .set({
-                filename: "QueueCare_OP_Ticket.pdf",
-                margin: 10,
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true
-                },
-                jsPDF: {
-                    unit: "mm",
-                    format: "a4",
-                    orientation: "portrait"
-                }
-            })
-            .from(container)
-            .save()
-            .then(() => {
-                document.body.removeChild(container);
-            })
-            .catch(error => {
-                console.error("PDF Error:", error);
-                document.body.removeChild(container);
-            });
+    
 
-    }, 500);
+
+    return html2pdf()
+        .set({
+            filename: "QueueCare_OP_Ticket.pdf",
+            margin: 10,
+            html2canvas: {
+                scale: 2,
+                useCORS: true
+            },
+            jsPDF: {
+                unit: "mm",
+                format: "a4",
+                orientation: "portrait"
+            }
+        })
+        .from(html)
+        .save()
+        .then(() => {
+            
+        });
 }

@@ -107,6 +107,7 @@ registerForm.addEventListener("submit", (e) => {
         alert("Account Created Successfully");
 
         registerForm.reset();
+        setActiveForm("signin");
       }
     })
 
