@@ -88,7 +88,7 @@
 
                     <div class="desktop-nav">
                         <a class="nav-link" href="main.html">Home</a>
-                        <a class="nav-link" href="#">Book Appointment</a>
+                        <a class="nav-link" href="Book.html" >Book Appointment</a>
                         <a class="nav-link" href="#">Live Queue</a>
                         <a class="nav-link" href="hospitals.html">Hospitals</a>
                         <a class="nav-link" href="#">Health Camps</a>
@@ -152,6 +152,11 @@
                             <span>My Appointments</span>
                         </button>
 
+                        <a href="familymembers.html"><button class="dropDownItem">
+                                <i class="bi bi-calendar-check"></i>
+                                <span>My Family</span>
+                            </button></a>
+
                         <button class="dropDownItem">
                             <i class="bi bi-gear"></i>
                             <span>Settings</span>
@@ -180,7 +185,7 @@
 
             <div class="mobile-nav">
                 <a href="main.html">Home</a>
-                <a href="#">Book Appointment</a>
+                <a href="Book.html">Book Appointment</a>
                 <a href="#">Live Queue</a>
                 <a href="hospitals.html">Hospitals</a>
                 <a href="#">Health Camps</a>
@@ -341,8 +346,8 @@
             profile_avatar.innerHTML = "";
             profile_avatar.innerHTML = profile_icon;
         }
+        
         window.addEventListener("click", () => {
-            //window control
             profile_dropDown.classList.remove("active");
             nav_menu.classList.remove("active");
         });

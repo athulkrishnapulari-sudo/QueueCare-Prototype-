@@ -32,6 +32,8 @@ const speed = 25; //for calculating time
 const profile_drop_btn = document.getElementById("profile_drop_btn");
 const navMenu_toggle_button = document.getElementsByClassName("menu-toggle")[0];
 const logout = document.getElementsByClassName('logout')[0];
+const BookOp1 = document.getElementById('BookOp1');
+const BookOp2 = document.getElementById('BookOp2');
 
 // =====================================================
 
@@ -52,6 +54,7 @@ const hospital_display = document.getElementById("hospital_display");
 const profile_name1 = document.getElementById('profile_name1');
 const profile_name2 = document.getElementById('profile_name2');
 const profile_avatar = document.getElementsByClassName('profile-avatar')[0];
+const members = document.getElementById('members');
 
 // =====================================================
 
@@ -254,6 +257,14 @@ function updateProfileIcon(){
   profile_avatar.innerHTML=""
   profile_avatar.innerHTML=profile_icon;
 }
+
+
+BookOp1.addEventListener('click', () => {
+            window.location.href="Book.html"
+})
+BookOp2.addEventListener('click', () => {
+            window.location.href="Book.html"
+})
 // =====================================================
 
 // =====================================================
