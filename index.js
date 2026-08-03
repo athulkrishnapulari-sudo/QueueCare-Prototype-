@@ -1,8 +1,8 @@
 window.onload = () => {
-  if (localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')==[]) {
+  if (localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')=="") {
     window.location.replace("family.html");
   }
-  else if(localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')!=[]){
+  else if(localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')!=""){
     window.location.replace("main.html");
   }
 };
