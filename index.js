@@ -2,6 +2,9 @@ window.onload = () => {
   if (localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')==[]) {
     window.location.replace("family.html");
   }
+  else if(localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')!=[]){
+    window.location.replace("main.html");
+  }
 };
 const signinFormCard = document.getElementById("signinFormCard");
 const registerFormCard = document.getElementById("registerFormCard");
