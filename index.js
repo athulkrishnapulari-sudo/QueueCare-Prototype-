@@ -1,5 +1,5 @@
 window.onload = () => {
-  if (localStorage.getItem("loggedIn") == "true") {
+  if (localStorage.getItem("loggedIn") == "true" && localStorage.getItem('FamilyDetails')==[]) {
     window.location.replace("family.html");
   }
 };
