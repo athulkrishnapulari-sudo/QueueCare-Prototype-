@@ -1331,15 +1331,37 @@ main {
 
 @media (max-width: 900px) {
   .desktop-nav,
-  .navbar__actions .profile-chip,
+  
   .navbar__actions .btn-ghost {
     display: none;
   }
-
-  .menu-toggle {
+  .navbar__actions{
     display: flex;
   }
-
+  .profile-chip{
+    display: flex;
+    position: absolute;
+    right:10px;
+    border:none;
+  }
+  #profile_title{
+    display: none;
+  }
+  .profile-chip svg{
+    display: none;
+  }
+  .language-picker{
+    display:none;
+  }
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right:60px
+  }
+  #profile_dropDown{
+    left:unset;
+    right:1%;
+  }
   .mobile-nav.is-open {
     display: flex;
   }
