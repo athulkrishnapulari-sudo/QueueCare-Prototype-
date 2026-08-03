@@ -141,9 +141,7 @@ form.addEventListener("submit", (e) => {
 
             token = responseData.token;
 
-            alert(
-                `Appointment booked successfully!\nToken No: ${token}`
-            );
+            
 
             generateOPTicket(data,token);
         }
