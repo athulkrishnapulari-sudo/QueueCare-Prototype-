@@ -306,5 +306,6 @@ logout.addEventListener('click',()=>{
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("Phone");
     localStorage.removeItem("Name");
+    localStorage.removeItem("FamilyDetails");
     window.location.replace("index.html");
 })
