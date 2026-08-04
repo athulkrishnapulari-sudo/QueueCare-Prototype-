@@ -8,67 +8,214 @@
     <link rel="stylesheet" href="main.css" />
     <script defer src="script.js"></script>
     <style>
-        @media (max-width: 900px) {
+        html,
+        body {
+            min-height: 100%;
+        }
 
-            .desktop-nav,
-            .navbar__actions .btn-ghost {
-                display: none;
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .app-shell {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .hospital-doctor-section {
+            padding: 30px;
+            background: #f8fafc;
+            flex: 1;
+        }
+
+        footer.footer {
+            margin-top: auto;
+        }
+
+        .hospital-header h1 {
+            font-size: 28px;
+            color: #0f172a;
+        }
+
+        .hospital-header p {
+            color: #64748b;
+        }
+
+        .hospital-card {
+            background: white;
+            margin-top: 25px;
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .hospital-title {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .hospital-icon {
+            height: 55px;
+            width: 55px;
+            background: #ccfbf1;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .hospital-title h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #0f172a;
+        }
+
+        .hospital-title p {
+            margin-top: 5px;
+            color: #64748b;
+        }
+
+        .department {
+            margin-top: 25px;
+        }
+
+        .department h3 {
+            font-size: 17px;
+            color: #0f766e;
+            margin-bottom: 15px;
+        }
+
+        .doctor-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .green {
+            background: #059669;
+        }
+
+        .purple {
+            background: #9333ea;
+        }
+
+        .blue {
+            background: #2563eb;
+        }
+
+        .red {
+            background: #e11d48;
+        }
+
+        .doctor-info {
+            flex: 1;
+        }
+
+        .doctor-info h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .doctor-info p {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .available {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .break {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .ended {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .doctor-item button {
+            background: #0f766e;
+            border: none;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 700px) {
+            .doctor-item {
+                flex-wrap: wrap;
             }
 
-            .navbar__actions {
-                display: flex;
+            .doctor-item button {
+                width: 100%;
             }
+        }
 
-            .profile-chip {
-                display: flex;
-                position: absolute;
-                right: 2px;
-                border: none;
-            }
+        .doctor-search {
+            margin: 25px 0;
+        }
 
-            #profile_name1 {
-                display: none;
-            }
+        .search-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
 
-            #profile_title {
-                display: none;
-            }
+        .search-box span {
+            font-size: 18px;
+        }
 
-            .profile-chip svg {
-                display: none;
-            }
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 15px;
+            color: #334155;
+        }
 
-            .language-picker {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 60px;
-            }
-
-            #profile_dropDown {
-                left: unset;
-                right: 1%;
-            }
-
-            .mobile-nav.is-open {
-                display: flex;
-            }
-
-            .hero__grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .token-card {
-                transform: none;
-            }
-
-            .quick-actions__grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
+        .search-box input::placeholder {
+            color: #94a3b8;
         }
     </style>
 </head>
@@ -88,7 +235,7 @@
 
                     <div class="desktop-nav">
                         <a class="nav-link" href="main.html">Home</a>
-                        <a class="nav-link" href="Book.html" >Book Appointment</a>
+                        <a class="nav-link" href="Book.html">Book Appointment</a>
                         <a class="nav-link" href="#">Live Queue</a>
                         <a class="nav-link" href="hospitals.html">Hospitals</a>
                         <a class="nav-link" href="#">Health Camps</a>
@@ -195,14 +342,114 @@
             </div>
         </nav>
 
-        <main>
-            <section class="hospital-page">
-                <div class="hospital-page__content">
-                    <div class="hospital-page__list" id="hospital_display2"></div>
+        <section class="hospital-doctor-section">
+            <div class="hospital-header">
+                <div>
+                    <h1>Doctors Status</h1>
+                    <p>Find available doctors and live OP status</p>
                 </div>
-            </section>
-        </main>
+            </div>
+            <div class="doctor-search">
+                <div class="search-box">
+                    <span>🔍</span>
 
+                    <input type="text" id="doctorSearch" placeholder="Search hospital, doctor or department..." />
+                </div>
+            </div>
+
+            <div class="hospital-card">
+                <div class="hospital-title">
+                    <div class="hospital-icon">🏥</div>
+
+                    <div>
+                        <h2>Government Medical College Hospital</h2>
+                        <p>Thiruvananthapuram</p>
+                    </div>
+                </div>
+
+                <div class="department">
+                    <h3>General Medicine</h3>
+
+                    <div class="doctor-list">
+                        <div class="doctor-item">
+                            <div class="avatar green">RK</div>
+
+                            <div class="doctor-info">
+                                <h4>Dr. Rajesh Kumar</h4>
+
+                                <p>Room OP-12 | Token #245</p>
+                            </div>
+
+                            <span class="status available"> Available </span>
+
+                            <button>View</button>
+                        </div>
+
+                        <div class="doctor-item">
+                            <div class="avatar purple">SN</div>
+
+                            <div class="doctor-info">
+                                <h4>Dr. Suresh Nair</h4>
+
+                                <p>Room OP-14 | Waiting 15</p>
+                            </div>
+
+                            <span class="status break"> Break </span>
+
+                            <button>View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="department">
+                    <h3>Pediatrics</h3>
+
+                    <div class="doctor-item">
+                        <div class="avatar blue">AN</div>
+
+                        <div class="doctor-info">
+                            <h4>Dr. Anitha Nair</h4>
+
+                            <p>Room OP-07 | Token #89</p>
+                        </div>
+
+                        <span class="status available"> Available </span>
+
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hospital-card">
+                <div class="hospital-title">
+                    <div class="hospital-icon">🏥</div>
+
+                    <div>
+                        <h2>District Hospital Kollam</h2>
+
+                        <p>Kollam</p>
+                    </div>
+                </div>
+
+                <div class="department">
+                    <h3>Orthopedics</h3>
+
+                    <div class="doctor-item">
+                        <div class="avatar red">VD</div>
+
+                        <div class="doctor-info">
+                            <h4>Dr. Vivek Das</h4>
+
+                            <p>Room OP-21 | Next OP Tomorrow</p>
+                        </div>
+
+                        <span class="status ended"> Closed </span>
+
+                        <button>View</button>
+                    </div>
+                </div>
+            </div>
+        </section>
         <footer class="footer">
             <div class="footer__inner">
                 <div class="footer__brand">
@@ -254,61 +501,6 @@
         </footer>
     </div>
     <script>
-        const hospital_display = document.getElementById("hospital_display2");
-
-        function UpdateHospitals() {
-            let hospitals = [];
-            const storedHospitals = localStorage.getItem("HospitalsSorted");
-
-            if (storedHospitals) {
-                try {
-                    hospitals = JSON.parse(storedHospitals);
-                } catch (error) {
-                    console.warn("Invalid hospital data in storage:", error);
-                }
-            }
-
-            if (!Array.isArray(hospitals) || hospitals.length === 0) {
-                hospitals = [
-                    { name: "Medical College Hospital", distance: 2.1 },
-                    { name: "General Hospital", distance: 3.8 },
-                    { name: "District Hospital", distance: 12.5 },
-                ];
-            }
-
-            hospital_display.innerHTML = "";
-
-            hospitals.forEach((item) => {
-                const travelTime = Math.max(1, Math.round((item.distance / 25) * 60));
-                hospital_display.innerHTML += `<div class="list-item">
-                    <div class="list-item__content">
-                      <div class="list-item__title-row">
-                        <span class="list-item__title">${item.name}</span>
-                        <span class="badge badge--recommended">Recommended</span>
-                      </div>
-                      <div class="list-item__meta">Thiruvananthapuram</div>
-                      <div class="meta-row">
-                        <div class="meta-pill">
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                          </svg>
-                          ${travelTime} mins
-                        </div>
-                        <div class="meta-pill">
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                            <circle cx="12" cy="9" r="2.5"></circle>
-                          </svg>${item.distance} km
-                        </div>
-                      </div>
-                    </div>
-                    <button class="book-btn" type="button">Book</button>
-                  </div>`;
-            });
-        }
         window.onload = () => {
             const loggedIn = localStorage.getItem("loggedIn");
 
@@ -320,7 +512,6 @@
             profile_name1.innerHTML = localStorage.getItem("Name");
             profile_name2.innerHTML = localStorage.getItem("Name");
             updateProfileIcon();
-            UpdateHospitals();
         };
         const profile_avatar =
             document.getElementsByClassName("profile-avatar")[0];
@@ -346,7 +537,7 @@
             profile_avatar.innerHTML = "";
             profile_avatar.innerHTML = profile_icon;
         }
-        
+
         window.addEventListener("click", () => {
             profile_dropDown.classList.remove("active");
             nav_menu.classList.remove("active");
@@ -366,6 +557,38 @@
             localStorage.removeItem("Phone");
             localStorage.removeItem("Name");
             window.location.replace("index.html");
+        });
+        const searchInput = document.getElementById("doctorSearch");
+
+        searchInput.addEventListener("input", () => {
+
+            const value = searchInput.value.toLowerCase();
+
+
+            const hospitals = document.querySelectorAll(".hospital-card");
+
+
+            hospitals.forEach(hospital => {
+
+
+                const text = hospital.innerText.toLowerCase();
+
+
+                if (text.includes(value)) {
+
+                    hospital.style.display = "block";
+
+                }
+                else {
+
+                    hospital.style.display = "none";
+
+                }
+
+
+            });
+
+
         });
     </script>
 </body>

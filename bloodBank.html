@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QueueCare | Blood Bank</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#F8FAFC;
+    color:#1e293b;
+}
+
+
+/* Hero */
+.blood-hero{
+    background:linear-gradient(135deg,#0f766e,#16a34a);
+    padding:50px 8%;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-radius:0 0 30px 30px;
+}
+
+.blood-hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.blood-hero p{
+    font-size:18px;
+    max-width:500px;
+}
+
+.blood-icon{
+    font-size:100px;
+}
+
+
+/* Container */
+
+.container{
+    padding:40px 8%;
+}
+
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+
+.card h3{
+    color:#0f766e;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#64748b;
+}
+
+
+/* Search */
+
+.search-box{
+    margin:40px 0;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+
+.search-box h2{
+    margin-bottom:20px;
+}
+
+
+.inputs{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+
+select,input{
+    padding:14px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    flex:1;
+    min-width:200px;
+}
+
+
+button{
+    background:#0f766e;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+
+button:hover{
+    background:#115e59;
+}
+
+
+/* Blood Availability */
+
+.blood-table{
+    margin-top:30px;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+
+th{
+    background:#0f766e;
+    color:white;
+    padding:15px;
+}
+
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #e2e8f0;
+}
+
+
+.available{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+
+.low{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+
+/* Emergency */
+
+.emergency{
+    margin-top:40px;
+    background:#fee2e2;
+    border-left:6px solid #dc2626;
+    padding:25px;
+    border-radius:15px;
+}
+
+
+.emergency button{
+    background:#dc2626;
+    margin-top:15px;
+}
+
+
+@media(max-width:700px){
+
+.blood-hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.blood-hero h1{
+    font-size:32px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+
+<section class="blood-hero">
+
+<div>
+<h1>Blood Bank</h1>
+<p>
+Find available blood units, request emergency blood,
+and become a life saver through QueueCare.
+</p>
+</div>
+
+<div class="blood-icon">
+🩸
+</div>
+
+</section>
+
+
+
+<div class="container">
+
+
+<div class="cards">
+
+<div class="card">
+<h3>🩸 Find Blood</h3>
+<p>
+Search nearby hospitals and blood banks
+for required blood groups.
+</p>
+</div>
+
+
+<div class="card">
+<h3>❤️ Donate Blood</h3>
+<p>
+Register as a donor and help patients
+in emergency situations.
+</p>
+</div>
+
+
+<div class="card">
+<h3>🚑 Emergency Request</h3>
+<p>
+Quickly request blood during critical
+medical situations.
+</p>
+</div>
+
+
+<div class="card">
+<h3>📍 Nearby Blood Banks</h3>
+<p>
+Locate verified government and private
+blood storage centres.
+</p>
+</div>
+
+</div>
+
+
+
+<div class="search-box">
+
+<h2>Search Blood Availability</h2>
+
+<div class="inputs">
+
+<select>
+<option>Select Blood Group</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>O+</option>
+<option>O-</option>
+</select>
+
+
+<input placeholder="Enter Location">
+
+
+<button>
+Search
+</button>
+
+</div>
+
+</div>
+
+
+
+<h2>Blood Stock Status</h2>
+
+
+<div class="blood-table">
+
+<table>
+
+<tr>
+<th>Blood Group</th>
+<th>Units Available</th>
+<th>Status</th>
+</tr>
+
+
+<tr>
+<td>A+</td>
+<td>24 Units</td>
+<td class="available">Available</td>
+</tr>
+
+
+<tr>
+<td>B+</td>
+<td>8 Units</td>
+<td class="available">Available</td>
+</tr>
+
+
+<tr>
+<td>O-</td>
+<td>2 Units</td>
+<td class="low">Low Stock</td>
+</tr>
+
+
+<tr>
+<td>AB+</td>
+<td>0 Units</td>
+<td class="low">Unavailable</td>
+</tr>
+
+
+</table>
+
+</div>
+
+
+
+<div class="emergency">
+
+<h2>Emergency Blood Request</h2>
+
+<p>
+Need blood urgently? Submit a request and nearby
+registered donors and hospitals will be notified.
+</p>
+
+<button>
+Request Blood
+</button>
+
+</div>
+
+
+</div>
+
+
+</body>
+</html>

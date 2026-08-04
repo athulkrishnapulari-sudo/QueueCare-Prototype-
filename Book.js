@@ -212,6 +212,12 @@ body {
     font-size:3.2mm;
     text-align:center;
 }
+    #row1 .row1 h3{
+        font-size:3.2mm;
+        position:absolute;
+        left:40%;
+        right:40%;
+    }
 
 .row1{
     display:flex;
