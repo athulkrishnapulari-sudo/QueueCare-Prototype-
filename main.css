@@ -326,6 +326,31 @@ button {
     background: #f3f4f6;
 }
 
+.dropdownSubMenu{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownSubItem{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 44px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
+}
+
+.dropdownSubItem:hover{
+    background: #f3f4f6;
+}
+
+.dropdownSubItem i{
+    font-size: 16px;
+    color: var(--primary);
+}
+
 .dropDownItem i{
     font-size: 18px;
     color: var(--primary);

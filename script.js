@@ -17,6 +17,15 @@ window.onload = () => {
   scriptURL =
     "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
   const phone = localStorage.getItem("Phone");
+    fetch(`${scriptURL}?phone=${phone}`)
+      .then(res => res.json())
+      .then(data => {
+          localStorage.setItem("OP", JSON.stringify(data.appointments));
+          updateOP();
+      });
+;
+  scriptURL =
+    "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
   setInterval(() => {
     fetch(`${scriptURL}?phone=${phone}`)
       .then(res => res.json())
@@ -24,7 +33,10 @@ window.onload = () => {
           localStorage.setItem("OP", JSON.stringify(data.appointments));
           updateOP();
       });
-}, 5000);
+      if(localStorage.getItem('OP')!=[]){
+    updateOP();
+  }
+}, 2000);
 };
 
 // ====================================================
@@ -291,7 +303,22 @@ const lastAppointment = appointments[appointments.length - 1];
 // CONTINIOUS RUNNING FUNCTIONS
 // =====================================================
 
-setInterval(() => {}, 1000);
+setInterval(() => {
+  scriptURL =
+    "https://script.google.com/macros/s/AKfycbyxXpiSyxRrgHkkcFDnNAce0ojyjZQfzv_1NcQTHFv2GoREKkVnApHk8H5ep_SSG19p/exec";
+  setInterval(() => {
+    const phone = localStorage.getItem("Phone");
+    fetch(`${scriptURL}?phone=${phone}`)
+      .then(res => res.json())
+      .then(data => {
+          localStorage.setItem("OP", JSON.stringify(data.appointments));
+          updateOP();
+      });
+      if(localStorage.getItem('OP')!=[]){
+    updateOP();
+  }
+}, 2000);
+}, 1000);
 
 // =====================================================
 

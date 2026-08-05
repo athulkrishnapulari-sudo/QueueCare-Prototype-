@@ -71,7 +71,7 @@
         border-radius: 14px;
         padding: 18px;
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: 2fr 1.3fr 1fr 1fr;
         gap: 15px;
         margin-bottom: 25px;
       }
@@ -252,15 +252,16 @@
               <span>My Profile</span>
             </button>
 
-            <button class="dropDownItem">
-              <i class="bi bi-calendar-check"></i>
-              <span>My Appointments</span>
-            </button>
-
-            <a href="familymembers.html"><button class="dropDownItem">
-              <i class="bi bi-calendar-check"></i>
-              <span>My Family</span>
-            </button></a>
+            <div class="dropdownSubMenu">
+              <button class="dropDownItem">
+                <i class="bi bi-calendar-check"></i>
+                <span>My Appointments</span>
+              </button>
+              <a href="op.html" class="dropdownSubItem">
+                <i class="bi bi-file-earmark-medical"></i>
+                <span>OP History</span>
+              </a>
+            </div>
 
             <button class="dropDownItem">
               <i class="bi bi-gear"></i>
@@ -312,6 +313,10 @@
           placeholder="🔍 Search medicine or generic name"
         />
 
+        <select id="hospitalFilter">
+          <option value="all">All Hospitals</option>
+        </select>
+
         <select id="categoryFilter">
           <option value="all">All Categories</option>
           <option>Antibiotic</option>
@@ -337,92 +342,105 @@
             <tr>
               <th>Medicine</th>
               <th>Generic Name</th>
+              <th>Hospital</th>
               <th>Category</th>
               <th>Availability</th>
             </tr>
           </thead>
 
           <tbody id="medicineTable">
-            <tr>
+            <tr data-hospital="Government Medical College Hospital">
               <td>Paracetamol 500 mg</td>
               <td>Paracetamol</td>
+              <td>Government Medical College Hospital</td>
               <td><span class="category">Pain Relief</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="Government Medical College Hospital">
               <td>Dolo 650</td>
               <td>Paracetamol</td>
+              <td>Government Medical College Hospital</td>
               <td><span class="category">Pain Relief</span></td>
               <td><span class="status low">Low Stock</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="District Hospital Kollam">
               <td>Amoxicillin</td>
               <td>Amoxicillin</td>
+              <td>District Hospital Kollam</td>
               <td><span class="category">Antibiotic</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="District Hospital Kollam">
               <td>Azithromycin</td>
               <td>Azithromycin</td>
+              <td>District Hospital Kollam</td>
               <td><span class="category">Antibiotic</span></td>
               <td><span class="status out">Out of Stock</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="General Hospital">
               <td>Metformin</td>
               <td>Metformin</td>
+              <td>General Hospital</td>
               <td><span class="category">Diabetes</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="General Hospital">
               <td>Amlodipine</td>
               <td>Amlodipine</td>
+              <td>General Hospital</td>
               <td><span class="category">Blood Pressure</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="Government Medical College Hospital">
               <td>Pantoprazole</td>
               <td>Pantoprazole</td>
+              <td>Government Medical College Hospital</td>
               <td><span class="category">Gastric</span></td>
               <td><span class="status low">Low Stock</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="District Hospital Kollam">
               <td>Omeprazole</td>
               <td>Omeprazole</td>
+              <td>District Hospital Kollam</td>
               <td><span class="category">Gastric</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="General Hospital">
               <td>Cetirizine</td>
               <td>Cetirizine</td>
+              <td>General Hospital</td>
               <td><span class="category">Allergy</span></td>
               <td><span class="status out">Out of Stock</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="Government Medical College Hospital">
               <td>Levocetirizine</td>
               <td>Levocetirizine</td>
+              <td>Government Medical College Hospital</td>
               <td><span class="category">Allergy</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="District Hospital Kollam">
               <td>Iron + Folic Acid</td>
               <td>Ferrous Sulphate</td>
+              <td>District Hospital Kollam</td>
               <td><span class="category">Vitamin</span></td>
               <td><span class="status available">Available</span></td>
             </tr>
 
-            <tr>
+            <tr data-hospital="General Hospital">
               <td>Vitamin C</td>
               <td>Ascorbic Acid</td>
+              <td>General Hospital</td>
               <td><span class="category">Vitamin</span></td>
               <td><span class="status low">Low Stock</span></td>
             </tr>
@@ -513,30 +531,76 @@
       const search = document.getElementById("search");
       const category = document.getElementById("categoryFilter");
       const availability = document.getElementById("availabilityFilter");
+      const hospitalFilter = document.getElementById("hospitalFilter");
+
+      function getHospitalsFromStorage() {
+        const storedHospitals = localStorage.getItem("HospitalsSorted");
+
+        try {
+          const parsed = JSON.parse(storedHospitals || "[]");
+          if (Array.isArray(parsed) && parsed.length) {
+            return parsed.map((item) => item.name).filter(Boolean);
+          }
+        } catch (error) {
+          console.warn("Unable to parse hospital data", error);
+        }
+
+        return [
+          "Government Medical College Hospital",
+          "District Hospital Kollam",
+          "General Hospital",
+        ];
+      }
+
+      function populateHospitalFilter() {
+        const hospitals = getHospitalsFromStorage();
+        hospitalFilter.innerHTML = "";
+
+        const allOption = document.createElement("option");
+        allOption.value = "all";
+        allOption.textContent = "All Hospitals";
+        hospitalFilter.appendChild(allOption);
+
+        hospitals.forEach((hospital) => {
+          const option = document.createElement("option");
+          option.value = hospital;
+          option.textContent = hospital;
+          hospitalFilter.appendChild(option);
+        });
+
+        hospitalFilter.value = hospitals[0] || "all";
+      }
 
       function filterTable() {
         const text = search.value.toLowerCase();
+        const selectedHospital = hospitalFilter.value.toLowerCase();
 
         document.querySelectorAll("#medicineTable tr").forEach((row) => {
           const medicine = row.cells[0].innerText.toLowerCase();
           const generic = row.cells[1].innerText.toLowerCase();
-          const cat = row.cells[2].innerText;
-          const stock = row.cells[3].innerText;
+          const hospital = (row.dataset.hospital || "").toLowerCase();
+          const cat = row.cells[3].innerText;
+          const stock = row.cells[4].innerText;
 
           const searchMatch = medicine.includes(text) || generic.includes(text);
+          const hospitalMatch =
+            selectedHospital === "all" || hospital === selectedHospital;
           const categoryMatch =
             category.value === "all" || cat === category.value;
           const stockMatch =
             availability.value === "all" || stock === availability.value;
 
           row.style.display =
-            searchMatch && categoryMatch && stockMatch ? "" : "none";
+            searchMatch && hospitalMatch && categoryMatch && stockMatch ? "" : "none";
         });
       }
 
+      populateHospitalFilter();
       search.addEventListener("input", filterTable);
+      hospitalFilter.addEventListener("change", filterTable);
       category.addEventListener("change", filterTable);
       availability.addEventListener("change", filterTable);
+      filterTable();
     </script>
   </body>
 </html>

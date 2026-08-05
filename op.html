@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QueueCare Kerala | OP History</title>
+    <link rel="stylesheet" href="main.css" />
+    <style>
+      .op-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+      }
+
+      .op-page__hero {
+        background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+        border: 1px solid #ccfbf1;
+        border-radius: 1.25rem;
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .op-page__eyebrow {
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 0.35rem;
+      }
+
+      .op-page__title {
+        margin: 0;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        line-height: 1.2;
+      }
+
+      .op-page__text {
+        margin: 0.5rem 0 0;
+        color: var(--muted);
+        max-width: 560px;
+      }
+
+      .op-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .op-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.25rem;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .op-card__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .op-card__number {
+        margin: 0.2rem 0 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .op-card__meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .op-card__field {
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.2rem;
+      }
+
+      .op-card__value {
+        font-weight: 600;
+      }
+
+      .op-empty {
+        background: var(--card);
+        border: 1px dashed var(--border);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        padding: 0.7rem 1rem;
+        border-radius: 0.75rem;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+      }
+
+      @media (max-width: 700px) {
+        .op-page__hero {
+          padding: 1.25rem;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .op-card__header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .op-card__meta {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <nav class="navbar">
+        <div class="navbar__inner">
+          <div class="navbar__row">
+            <a class="brand" href="#">
+              <img src="assets/images/logo.png" alt="QueueCare Kerala Logo" />
+              <div>
+                <div class="brand__title">QueueCare</div>
+                <div class="brand__tag">Kerala</div>
+              </div>
+            </a>
+
+            <div class="desktop-nav">
+              <a class="nav-link" href="main.html">Home</a>
+              <a class="nav-link" href="Book.html">Book Appointment</a>
+              <a class="nav-link" href="op.html">OP History</a>
+              <a class="nav-link" href="hospitals.html">Hospitals</a>
+              <a class="nav-link" href="bloodBank.html">Blood Bank</a>
+            </div>
+
+            <div class="navbar__actions">
+              <div class="language-picker">
+                <label class="language-picker__label" for="language-select" aria-label="Select language">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  <select id="language-select" class="language-picker__select">
+                    <option value="en">English</option>
+                    <option value="ml">മലയാളം</option>
+                  </select>
+                </label>
+              </div>
+              <div class="profile-chip" id="profile_drop_btn">
+                <div class="profile-avatar"></div>
+                <div id="profile_title">
+                  <div id="profile_name1" style="font-size: 0.75rem; font-weight: 600; color: #1f2937">FullName</div>
+                  <div style="font-size: 0.6rem; color: #9ca3af">Good morning!</div>
+                </div>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div id="profile_dropDown">
+              <div class="profileHeader">
+                <div class="profileAvatar">
+                  <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="profileInfo">
+                  <h4 id="profile_name2">Full Name</h4>
+                </div>
+              </div>
+              <hr />
+              <button class="dropDownItem">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </button>
+              <div class="dropdownSubMenu">
+                <button class="dropDownItem">
+                  <i class="bi bi-calendar-check"></i>
+                  <span>My Appointments</span>
+                </button>
+                <a href="op.html" class="dropdownSubItem">
+                  <i class="bi bi-file-earmark-medical"></i>
+                  <span>OP History</span>
+                </a>
+              </div>
+              <a href="familymembers.html"><button class="dropDownItem">
+                <i class="bi bi-people"></i>
+                <span>My Family</span>
+              </button></a>
+              <button class="dropDownItem logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+              </button>
+            </div>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-nav">
+          <a href="main.html">Home</a>
+          <a href="Book.html">Book Appointment</a>
+          <a href="op.html">OP History</a>
+          <a href="hospitals.html">Hospitals</a>
+          <a href="bloodBank.html">Blood Bank</a>
+        </div>
+      </nav>
+
+      <main>
+        <section class="op-page">
+          <div class="op-page__hero">
+            <div>
+              <div class="op-page__eyebrow">Saved OP Tickets</div>
+              <h1 class="op-page__title">Your OP appointments</h1>
+              <p class="op-page__text">All OP records stored locally are shown here. Download a ticket whenever you need a printable copy.</p>
+            </div>
+            <a class="btn-primary" href="Book.html">Book Another OP</a>
+          </div>
+
+          <div id="op-list" class="op-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <img src="assets/images/govt.png" alt="Govt of Kerala" />
+            <div>
+              <div class="footer__title">Government of Kerala</div>
+              <div class="footer__meta">Health &amp; Family Welfare Department</div>
+              <div class="footer__copy">© 2026 QueueCare Kerala. All rights reserved.</div>
+            </div>
+          </div>
+
+          <div class="footer__right">
+            <div class="footer__social">
+              <a class="social-link" href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+              <a class="social-link" href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+              <a class="social-link" href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+              <a class="social-link" href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"></polygon></svg></a>
+            </div>
+            <div class="footer__links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      const profile_drop_btn = document.getElementById("profile_drop_btn");
+      const profile_dropDown = document.getElementById("profile_dropDown");
+      const nav_menu = document.getElementsByClassName("mobile-nav")[0];
+      const navMenu_toggle_button = document.getElementsByClassName("menu-toggle")[0];
+      const profile_avatar = document.getElementsByClassName("profile-avatar")[0];
+      const profile_name1 = document.getElementById("profile_name1");
+      const profile_name2 = document.getElementById("profile_name2");
+      const opList = document.getElementById("op-list");
+
+      function updateProfileIcon() {
+        const family = localStorage.getItem("FamilyDetails");
+        if (!family) return;
+        try {
+          const family_data = JSON.parse(family);
+          const first = family_data[0] || {};
+          const firstName = first.FirstName || "";
+          const lastName = first.LastName || "";
+          const profile_icon = (firstName[0] || "") + (lastName[0] || "");
+          profile_avatar.innerHTML = (profile_icon || "U").toUpperCase();
+          const fullName = [firstName, lastName].filter(Boolean).join(" ").trim();
+          if (profile_name1) {
+            profile_name1.innerHTML = fullName || localStorage.getItem("Name") || "FullName";
+          }
+          if (profile_name2) {
+            profile_name2.innerHTML = fullName || localStorage.getItem("Name") || "Full Name";
+          }
+        } catch (error) {
+          console.warn("Unable to update profile", error);
+        }
+      }
+
+      function getAppointments() {
+        try {
+          const saved = localStorage.getItem("OP");
+          if (!saved) return [];
+          const parsed = JSON.parse(saved);
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+          console.warn("Unable to read OP history", error);
+          return [];
+        }
+      }
+
+      function getValue(item, key) {
+        var value = item && item[key];
+        return value !== undefined && value !== null && value !== "" ? value : "";
+      }
+
+      function formatValue(value) {
+        if (value === undefined || value === null || value === "") {
+          return "—";
+        }
+        if (typeof value === "string" && value.includes("T") && value.includes("Z")) {
+          try {
+            return new Date(value).toLocaleString();
+          } catch (error) {
+            return value;
+          }
+        }
+        return value;
+      }
+
+      function renderAppointments() {
+        var appointments = getAppointments();
+        if (!appointments.length) {
+          opList.innerHTML = '<div class="op-empty">No OP records found yet. Book an appointment to see it here.</div>';
+          return;
+        }
+
+        opList.innerHTML = appointments.map(function (appointment, index) {
+          var fields = [
+            { label: "Age", value: formatValue(getValue(appointment, "Age")) },
+            { label: "AppointmentDate", value: formatValue(getValue(appointment, "AppointmentDate")) },
+            { label: "AppointmentTime", value: formatValue(getValue(appointment, "AppointmentTime")) },
+            { label: "Department", value: formatValue(getValue(appointment, "Department")) },
+            { label: "District", value: formatValue(getValue(appointment, "District")) },
+            { label: "Doctor", value: formatValue(getValue(appointment, "Doctor")) },
+            { label: "Gender", value: formatValue(getValue(appointment, "Gender")) },
+            { label: "Hospital", value: formatValue(getValue(appointment, "Hospital")) },
+            { label: "Name", value: formatValue(getValue(appointment, "Name")) },
+            { label: "OPNo", value: formatValue(getValue(appointment, "OPNo")) },
+            { label: "Phone", value: formatValue(getValue(appointment, "Phone")) },
+            { label: "Token", value: formatValue(getValue(appointment, "Token")) }
+          ];
+
+          return '<div class="op-card"><div class="op-card__header"><div><div class="op-page__eyebrow">OP Record ' + (index + 1) + '</div><h3 class="op-card__number">' + (formatValue(getValue(appointment, "OPNo")) || "OP Record") + '</h3></div></div><div class="op-card__meta">' + fields.map(function (field) {
+            return '<div><div class="op-card__field">' + field.label + '</div><div class="op-card__value">' + field.value + '</div></div>';
+          }).join("") + '</div></div>';
+        }).join("");
+      }
+
+      window.addEventListener("click", function () {
+        profile_dropDown.classList.remove("active");
+        nav_menu.classList.remove("active");
+      });
+
+      profile_drop_btn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        profile_dropDown.classList.toggle("active");
+      });
+
+      navMenu_toggle_button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        nav_menu.classList.toggle("active");
+      });
+
+      updateProfileIcon();
+      renderAppointments();
+    </script>
+  </body>
+</html>
